@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>Volkswagen AR App Admin Panel</title>
+    
     <link rel="stylesheet" type="text/css" href="Styles.css">
+    
     <script>
-        function redirectToExample() {
-            window.location.href = "http://www.capstone.cse.msu.edu/2022-08/other-links/downloads/";
+        function createAccountDatabase() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+            } else {
+                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID" + username + "&Password=" + password + "&Color=Violet";
+                window.location.href = url;
+            }
         }
+        
     </script>
+    
 </head>
+    
 <body>
 
 <h1>Volkswagen AR App Admin Panel</h1>
@@ -29,9 +44,15 @@
         <input type="password" id="password" name="password"><br><br>
     </div>
 
-<button onclick="redirectToExample()">Go to Example.com</button>
+    <div class = "input-boxes">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+    </div>
+
+<button onclick="createAccountDatabase()">Create Account</button>
 
 </form>
 
 </body>
+    
 </html>
