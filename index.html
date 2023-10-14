@@ -3,6 +3,11 @@
 <head>
     <title>Volkswagen AR App Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="Styles.css">
+    <script>
+        function redirectToExample() {
+            window.location.href = "http://www.capstone.cse.msu.edu/2022-08/other-links/downloads/";
+        }
+    </script>
 </head>
 <body>
 
@@ -11,10 +16,6 @@
 <div class = "vw-image">
     <img src="2023-08-volkswagen-logo.png" alt="Volkswagen Logo" width="160" height="160">
 </div>
-
-
-<!-- form method="POST" action="your_server_url" -->
-<!-- this will allow us to post whatever is submitted in the form to the server url-->
     
 <form>
     
@@ -28,7 +29,7 @@
         <input type="password" id="password" name="password"><br><br>
     </div>
 
-<input type="submit" value="Submit">
+<button onclick="redirectToExample()">Go to Example.com</button>
 
 </form>
 
