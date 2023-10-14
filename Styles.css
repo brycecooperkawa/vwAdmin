@@ -10,12 +10,3 @@ label, input {
     display: inline-block;
     margin-bottom: 10 px;
 }
-
-@font-face {
-    font-family: 'VWFont';
-    src: url('Aganè 45 (light).ttf') format('truetype');
-}
-
-body {
-    font-family: 'VWFont', sans-serif;
-}
