@@ -11,7 +11,7 @@ label, input {
     margin-bottom: 10 px;
 }
 
-.header-container {
+.header {
             display: flex;
             align-items: center;
 }
