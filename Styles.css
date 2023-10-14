@@ -11,12 +11,8 @@ label, input {
     margin-bottom: 10 px;
 }
 
-.header {
-        display: flex;
-        align-items: center;
-}
+img {
+    text-align: center;
+}    
 
-.header h1, .header img {
-        display: inline-block;
-        vertical-align: middle;
-}
+    
