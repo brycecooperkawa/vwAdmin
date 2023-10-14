@@ -3,10 +3,19 @@ h1 {
 }
 
 .input-boxes {
-    margin-bottom: 10px;
+    margin-bottom: 10 px;
 }
 
 label, input {
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 10 px;
+}
+
+@font-face {
+    font-family: 'VWFont';
+    src: url('Aganè 45 (light).ttf') format('truetype');
+}
+
+body {
+    font-family: 'VWFont', sans-serif;
 }
