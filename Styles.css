@@ -11,8 +11,11 @@ label, input {
     margin-bottom: 10 px;
 }
 
-img {
-    text-align: center;
-}    
+.vw-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100 vh;
+}  
 
     
