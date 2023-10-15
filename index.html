@@ -12,11 +12,13 @@
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirmPassword').value;
 
+            console.log("https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "Grant" + "&Password=" + "Iam" + "&Color=Violet");
+
             if (password !== confirmPassword) {
                 alert("Passwords do not match. Please try again.");
             } else {
                 var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "Grant" + "&Password=" + "Iam" + "&Color=Violet";
-                //var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=Jim&Password=goes&Color=Violet"
+                //var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=Jim&Password=goes&Color=Violet";
                 window.location.href = url;
             }
         }
