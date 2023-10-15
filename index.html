@@ -17,9 +17,16 @@
             if (password !== confirmPassword) {
                 alert("Passwords do not match. Please try again.");
             } else {
-                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "Odell" + "&Password=" + "Beckham" + "&Color=Violet";
+                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "Eli" + "&Password=" + "Manning" + "&Color=Violet";
                 //var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=Jim&Password=goes&Color=Violet";
-                window.location.href = url;
+                //window.location.href = url;
+                fetch(url, {
+                    method: 'GET'
+                }).then(response => {
+                    console.log('Request sent successfully');
+                }).catch(error => {
+                    console.error('Error sending request:', error);
+                });
             }
         }
         
