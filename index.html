@@ -54,7 +54,17 @@
 
 <button onclick="createAccountDatabase()">Create Account</button>
 
+<button onclick="showUsername()">Show Username</button>
+
 </form>
+
+    <script>
+        function showUsername() {
+            var username = document.getElementById('username').value;
+            var displayElement = document.getElementById('displayUsername');
+            displayElement.innerText = "Username: " + username;
+        }
+    </script>
 
 </body>
     
