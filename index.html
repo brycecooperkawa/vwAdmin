@@ -24,12 +24,11 @@
                     method: 'GET'
                 }).then(response => {
                     console.log('Request sent successfully');
-                    usernameInput.value = '';
-                    passwordInput.value = '';
-                    confirmPasswordInput.value = '';
                 }).catch(error => {
                     console.error('Error sending request:', error);
                 });
+                username.value = 'New Value';
+                alert("Account Created Successfully");
             }
         }
         
