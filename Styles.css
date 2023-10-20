@@ -18,4 +18,14 @@ label, input {
     height: 100 vh;
 }  
 
+.model_display{
+    height: 50vh;
+    width: 50vw;
+}
+
+model-viewer{
+    height: inherit;
+    width: inherit;
+}
+
     
