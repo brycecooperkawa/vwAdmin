@@ -96,14 +96,15 @@ button {
     font-family: 'VWText-Regular';
 }
 
-  .image-container {
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .image-container div {
+.image-container div {
     padding: 10px;
-  }
+    text-align: center;
+}
 
     
