@@ -15,6 +15,10 @@
     src: url("VWHead-Regular.otf") format("opentype");
 }
 
+body { 
+    background-color: #fdfaf9; 
+}
+
 
 h1 {
     font-family: 'VWHead-Bold';
@@ -68,6 +72,7 @@ th {
 
 .section-header {
     font-family: 'VWHead-Regular';
+    color: #6091c3;
     padding: 60px;
     text-align: center;
     font-size: 30px;
