@@ -54,7 +54,6 @@ model-viewer{
 }
 
 table {
-    font-family: 'VWText-Regular';
     border-collapse: collapse;
     width: 100%;
 }
@@ -67,12 +66,10 @@ td, th {
 }
 
 th {
-    font-family: 'VWText-Regular';
     background-color: #f2f2f2;
 }
 
 .section-header {
-    font-family: 'VWHead-Regular';
     color: #6091c3;
     padding: 60px;
     text-align: center;
