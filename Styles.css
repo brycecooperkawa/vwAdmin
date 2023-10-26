@@ -28,26 +28,4 @@ model-viewer{
     width: inherit;
 }
 
-/* Style the menu bar */
-.menu {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Style the links inside the menu bar */
-.menu a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.menu a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
     
