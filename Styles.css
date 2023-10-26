@@ -54,12 +54,14 @@ table {
 }
 
 td, th {
+    font-family: 'VWText-Regular';
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
 th {
+    font-family: 'VWText-Regular';
     background-color: #f2f2f2;
 }
 
