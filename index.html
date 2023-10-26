@@ -37,8 +37,6 @@
             var modelName = document.getElementById('modelName').value;
             var modelUrl = document.getElementById('modelUrl').value;
             var car = document.getElementById('car').value;
-
-            var check_exists = 1;
             
             var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
             fetch(url, {
@@ -48,7 +46,6 @@
             }).catch(error => {
                 console.error('Error sending request:', error);
                 alert("Error: Model Already Exists, Please Try Again With New Model");
-                check_exists = 0;
             });
             alert("Model Uploaded");
         }    
@@ -73,7 +70,7 @@
 
 <div class="image-container">
   <div>
-    <img src="2023-08-volkswagen-logo.png" alt="Volkswagen Logo" style="width:65%;">
+    <img src="2023-08-volkswagen-logo.png" alt="Volkswagen Logo" style="width:69%;">
   </div>
   <div>
     <div class = "model-display">
