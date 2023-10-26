@@ -31,15 +31,22 @@
         }
 
         function uploadModel(){
-                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "bob" + "&Password=" + "chin" + "&Color=Violet";
-                fetch(url, {
-                    method: 'GET'
-                }).then(response => {
-                    console.log('Request sent successfully');
-                }).catch(error => {
-                    console.error('Error sending request:', error);
-                });
-                alert("Model Uploaded Successfully");
+
+            event.preventDefault();
+            
+            var modelName = document.getElementById('modelName').value;
+            var modelUrl = document.getElementById('modelUrl').value;
+            var car = document.getElementById('car').value;
+            
+            var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "bob" + "&Password=" + "chin" + "&Color=Violet";
+            fetch(url, {
+                method: 'GET'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
+            alert("Model Uploaded Successfully");
         }    
         
     </script>
@@ -95,9 +102,34 @@
 </div>
 <br>
     
+<form>
+    
+    <div class = "input-boxes">
+        <label for="modelName">Model Name: </label>
+        <input type="text" id="modelName" name="modelName"><br><br>
+    </div>
+
+    <div class = "input-boxes">
+        <label for="modelUrl">Model URL: </label>
+        <input type="text" id="modelUrl" name="modelUrl"><br><br>
+    </div>
+
+    <div class = "input-boxes">
+        <label for="car">Car (1 for Yes, 0 for No): </label>
+        <input type="text" id="car" name="car"><br><br>
+    </div>
+
 <button onclick="uploadModel()">Upload Model</button>
 
+</form>
+
 <br><br>
+
+<!-- Create User Account -->
+<div class = "section-header">
+    <p>Create User Account</p>
+</div>
+<br>
     
 <form>
     
