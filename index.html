@@ -47,13 +47,10 @@
                 console.log('Request sent successfully');
             }).catch(error => {
                 console.error('Error sending request:', error);
-                alert("Model Already Exists");
+                alert("Error: Model Already Exists, Please Try Again With New Model");
                 check_exists = 0;
             });
-
-            if (check_exists == 1){
-                alert("Model Successfully Uploaded");
-            }
+            alert("Model Uploaded");
         }    
         
     </script>
