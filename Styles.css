@@ -1,4 +1,12 @@
+@font-face {
+    font-family: 'VWText-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url("VWText-Regular.otf") format("opentype");
+}
+
 h1 {
+    font-family: 'VWText-Regular';
     text-align: center;
 }
 
