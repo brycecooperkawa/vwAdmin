@@ -27,11 +27,22 @@
                 }).catch(error => {
                     console.error('Error sending request:', error);
                 });
-                username.value = 'New Value';
                 alert("Account Created Successfully");
             }
 
         }
+
+        function uploadModel(){
+                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Violet";
+                fetch(url, {
+                    method: 'GET'
+                }).then(response => {
+                    console.log('Request sent successfully');
+                }).catch(error => {
+                    console.error('Error sending request:', error);
+                });
+                alert("Model Uploaded Successfully");
+        }    
         
     </script>
 
@@ -40,6 +51,14 @@
 </head>
     
 <body>
+
+<div class="menu">
+  <a href="#view">View</a>
+  <a href="#upload">Upload</a>
+  <a href="#delete">Delete</a>
+</div>
+
+<div style="padding:20px;margin-top:30px;background-color:#f2f2f2;height:1500px;">
 
 <h1>Volkswagen AR App Admin Panel</h1>
 
@@ -67,6 +86,8 @@
 <button onclick="createAccountDatabase()">Create Account</button>
 
 </form>
+
+<button onclick="uploadModel()">Upload Model</button>
 
 <div class = "model_display">
 <model-viewer src="vwbuzz_low.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1" scale="3 3 3"> </model-viewer>
