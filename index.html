@@ -37,6 +37,8 @@
             var modelName = document.getElementById('modelName').value;
             var modelUrl = document.getElementById('modelUrl').value;
             var car = document.getElementById('car').value;
+
+            var check_exists = 1;
             
             var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
             fetch(url, {
@@ -46,8 +48,12 @@
             }).catch(error => {
                 console.error('Error sending request:', error);
                 alert("Model Already Exists");
+                check_exists = 0;
             });
-            alert("Model Uploaded Successfully");
+
+            if (check_exists == 1){
+                alert("Model Successfully Uploaded");
+            }
         }    
         
     </script>
