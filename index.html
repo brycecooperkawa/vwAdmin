@@ -18,8 +18,6 @@
                 alert("Passwords do not match. Please try again.");
             } else {
                 var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Violet";
-                //var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=Jim&Password=goes&Color=Violet";
-                //window.location.href = url;
                 fetch(url, {
                     method: 'GET'
                 }).then(response => {
@@ -33,7 +31,7 @@
         }
 
         function uploadModel(){
-                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Violet";
+                var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + "bob" + "&Password=" + "chin" + "&Color=Violet";
                 fetch(url, {
                     method: 'GET'
                 }).then(response => {
