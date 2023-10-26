@@ -96,4 +96,8 @@ button {
     font-family: 'VWText-Regular';
 }
 
+.container {
+    display:inline-block;
+}
+
     
