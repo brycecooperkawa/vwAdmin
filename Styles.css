@@ -96,4 +96,14 @@ button {
     font-family: 'VWText-Regular';
 }
 
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container div {
+    padding: 10px;
+  }
+
     
