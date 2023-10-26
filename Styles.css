@@ -5,8 +5,19 @@
     src: url("VWText-Regular.otf") format("opentype");
 }
 
+@font-face {
+    font-family: 'VWHead-Bold';
+    src: url("VWHead-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: 'VWHead-Regular';
+    src: url("VWHead-Regular.otf") format("opentype");
+}
+
+
 h1 {
-    font-family: 'VWText-Regular';
+    font-family: 'VWHead-Bold';
     text-align: center;
 }
 
@@ -37,25 +48,26 @@ model-viewer{
 }
 
 table {
-  font-family: Arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    font-family: 'VWText-Regular';
+    border-collapse: collapse;
+    width: 100%;
 }
 
 td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
 th {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .section-header {
-  padding: 60px;
-  text-align: center;
-  font-size: 30px;
+    font-family: 'VWHead-Regular';
+    padding: 60px;
+    text-align: center;
+    font-size: 30px;
 }
 
     
