@@ -51,6 +51,7 @@
             alert("Error: Model Already Exists, Please Try Again With New Model");
         });
         alert("Model Uploaded");
+        console.log("Model Upload");
     }
 
     //get the database information functionality
@@ -69,6 +70,7 @@
     //add row to table
     const table = document.getElementById('database-table');
     addRow(){
+        console.log("Hello");
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
