@@ -57,10 +57,11 @@
 
             const response = await (await fetch(url)).json();
             data.innerHTML = response.data;
-            ModelName.innerHTML = "test";
+            ModelNameTable.innerHTML = "test";
         }
 
-requestJSON(requestUrl);
+        requestJSON(requestUrl);
+        ModelUrlTable.innerHTML = "test";
         
     </script>
 
@@ -94,9 +95,9 @@ requestJSON(requestUrl);
     
 <table id='overview-table'>
   <tr>
-    <th>ModelName</th>
-    <th>ModelUrl</th>
-    <th>Type</th>
+    <th>ModelNameTable</th>
+    <th>ModelUrlTable</th>
+    <th>TypeTable</th>
   </tr>
   <tr>
     <td id='Model Name'></td>
