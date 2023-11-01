@@ -64,6 +64,14 @@
         cell2.innerHTML = '<a href="' + url + '">Link to ' + name + '</a>';
         cell3.innerHTML = type;
     }
+
+    $.getJSON('https://5nzaz3yjyqxt4pvbkrwblpe4q40mrosg.lambda-url.us-east-2.on.aws/', function(data) {
+        //data is the JSON string
+        var jsonObj = JSON.parse(data);  
+        console.log(jsonObj[0]);
+    });
+
+requestJSON(requestUrl);
     
     </script>
 
