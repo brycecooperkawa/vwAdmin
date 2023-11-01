@@ -52,33 +52,6 @@
         });
         alert("Model Uploaded");
     }
-
-    //get the database information functionality
-    const requestUrl = 'https://5nzaz3yjyqxt4pvbkrwblpe4q40mrosg.lambda-url.us-east-2.on.aws/';
-    var test = "fish"; 
-        
-    const requestJSON = async url => {
-
-        const response = await (await fetch(url)).json();
-        data.innerHTML = response.data;
-        ModelNameTable.innerHTML = test;
-    }
-
-    requestJSON(requestUrl);
-
-    //add row to table
-    const table = document.getElementById('database-table');
-    function addRow(){
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>
-                <td>Car 1</td>
-                <td><a href="https://www.example.com/car1">Link to Car 1</a></td>
-                <td>Sedan</td>
-            </td>`;
-        table.appendChild(row);
-        alert("Row Added");
-    }
     
     </script>
 
