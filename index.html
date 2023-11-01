@@ -48,7 +48,19 @@
                 alert("Error: Model Already Exists, Please Try Again With New Model");
             });
             alert("Model Uploaded");
-        }    
+        }
+
+        const requestUrl = 'https://5nzaz3yjyqxt4pvbkrwblpe4q40mrosg.lambda-url.us-east-2.on.aws/';
+        var test = "fish";
+
+        const requestJSON = async url => {
+
+            const response = await (await fetch(url)).json();
+            data.innerHTML = response.data;
+            document.write(test)
+        }
+
+requestJSON(requestUrl);
         
     </script>
 
