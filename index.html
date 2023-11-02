@@ -78,13 +78,18 @@
         //current issue is https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
         //data=response.data
         //then parse from here
+        
         console.log(data)
         var dataLength = data.length;
         for (var i = 0; i < dataLength; i++) {
             console.log(data[i]);
             var modelInfo = data[i];
-            
-            addRow(modelInfo[0], modelInfo[1], modelInfo[2]);
+
+            if (modelInfo[2] == '1'){
+                addRow(modelInfo[0], modelInfo[1], "Car");
+            }else{
+                addRow(modelInfo[0], modelInfo[1], "Accessory");
+            }
             
         }
         
