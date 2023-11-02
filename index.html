@@ -39,14 +39,14 @@
             
         var modelName = document.getElementById('modelName').value;
         var modelUrl = document.getElementById('modelUrl').value;
-        var type = document.getElementById('type').value;
+        //var type = document.getElementById('type').value;
         
         var car = '1';
         if (type == 'accessory'){
             car = '0';
         }
             
-        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
+        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + '1';
         fetch(url, {
             method: 'GET'
         }).then(response => {
@@ -82,7 +82,7 @@
         
         //for actual use
         //current issue is https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
-        data=response.data
+        //data=response.data
         //then parse from here
         
         var dataLength = data.length;
