@@ -69,8 +69,12 @@
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4)
         cell1.innerHTML = name;
-        cell2.innerHTML = '<a href="' + mUrl + '">Link to ' + name + '</a>';
-        cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
+        cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
+        if (wURL = 'N/A'){
+            cell3.innerHTML = 'N/A';
+        }else{
+            cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
+        }
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
     }
@@ -102,9 +106,19 @@
             var modelInfo = data[i];
 
             if (modelInfo[2] == '1'){
+                //car
                 addRow(modelInfo[0], modelInfo[1], modelInfo[3], "Car", "N/A");
             }else{
-                addRow(modelInfo[0], modelInfo[1], "N/A", "Accessory", modelInfo[4]);
+                //accessory
+                var loc;
+                if (modelInfo[4] == '1'){
+                    loc = 'Top Left';
+                }else if (modelInfo[4] == '2'){
+                    loc = 'Top Middle';
+                }else if (modelInfo[4] == '3'){
+                    loc = 'Top Right';
+                }
+                addRow(modelInfo[0], modelInfo[1], "N/A", "Accessory", loc);
             }
         }
     }
@@ -120,6 +134,7 @@
         //allow deleting directly from the table
         //allow alphabetical sorting/filtering on the table
     //Delete functionality
+    //Upload Model add the new columns
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
