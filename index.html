@@ -24,11 +24,10 @@
                 method: 'GET'
             }).then(response => {
                 console.log('Request sent successfully');
-                alert("Account Created Successfully");
             }).catch(error => {
                 console.error('Error sending request:', error);
-                alert("Account Creation Failed. Please Try Again");
             });
+            alert("Account Created Successfully");
         }
 
     }
@@ -54,7 +53,6 @@
             console.log('Request sent successfully');
         }).catch(error => {
             console.error('Error sending request:', error);
-            alert("Error: Model Already Exists, Please Try Again With New Model");
         });
         alert("Model Uploaded");
     }
