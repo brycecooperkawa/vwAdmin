@@ -69,6 +69,19 @@
         cell3.innerHTML = type;
     }
 
+    //function that clears all rows from table, then updates it
+    //called after a model is uploaded so the table updates without having to refresh the page
+    function clearTable() {
+        //clears table
+        var table = document.getElementById("database-table");
+        var rowCount = table.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            table.deleteRow(i);
+        }
+        //refills table with updated info
+        requestJSON(requestUrl);
+    }
+
     //parse the data currently in the table, then add to the table
     const requestUrl = 'https://clrddiepd6pcxqmj5jscpg6cki0capjo.lambda-url.us-east-2.on.aws/'
     var data;
@@ -101,6 +114,12 @@
         //allow deleting directly from the table
         //allow alphabetical sorting/filtering on the table
     //Delete functionality
+
+    //THINGS DONE THIS WEEK
+    //added dynamically updating table that pulls from url
+    //created function that can add rows
+    //function that updates the table on upload
+    //changed the part of upload models to be a dropdown choice box for car or accessory
     
     </script>
 
