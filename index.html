@@ -40,7 +40,6 @@
         var modelName = document.getElementById('modelName').value;
         var modelUrl = document.getElementById('modelUrl').value;
         var type = document.getElementById('type').value;
-        console.log(type)
         
         var car = '1';
         if (type == 'accessory'){
@@ -48,7 +47,6 @@
         }
             
         var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
-        console.log(url)
         fetch(url, {
             method: 'GET'
         }).then(response => {
@@ -86,10 +84,8 @@
         //data=response.data
         //then parse from here
         
-        console.log(data)
         var dataLength = data.length;
         for (var i = 0; i < dataLength; i++) {
-            console.log(data[i]);
             var modelInfo = data[i];
 
             if (modelInfo[2] == '1'){
@@ -139,8 +135,6 @@
         <th>Type</th>
     </tr>
 </table>
-
-<button onclick="addRow('Hello', 'https://www.example.com/newcar', '0')">Add Row Test</button>
 
 <br><br>
     
