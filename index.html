@@ -56,10 +56,8 @@
         }else if (location == 'tright'){
             loc = '3';
         }
-
-        //ADD LOC AND WEBSITEURL TO THE UPLOAD URL ONCE ITS READY
             
-        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
+        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + "modelUrl" + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
         fetch(url, {
             method: 'GET'
         }).then(response => {
@@ -169,7 +167,6 @@
             //use existing delete and upload functions for that and figure out how to make a row inputable on button click
         //allow deleting directly from the table
         //allow alphabetical sorting/filtering on the table
-    //Delete functionality
     //Upload Model add the new columns
         //the new selection should be there, just need to push it to the url
 
@@ -178,6 +175,7 @@
     //created function that can add rows
     //function that updates the table on upload
     //changed the part of upload models to be a dropdown choice box for car or accessory
+    //Delete functionality
     
     </script>
 
@@ -263,7 +261,6 @@
     </div>
 
 <button onclick="uploadModel()">Upload Model</button>
-<button onclick="deleteModel('hello','car')">Delete</button>
 
 </form>
 
