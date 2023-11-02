@@ -39,12 +39,25 @@
             
         var modelName = document.getElementById('modelName').value;
         var modelUrl = document.getElementById('modelUrl').value;
+        var websiteUrl = document.getElementByID('websiteUrl').value;
         var type = document.getElementById('type').value;
+        var location = document.getElementById('location').value;
         
         var car = '1';
         if (type == 'accessory'){
             car = '0';
         }
+
+        var loc = '0';
+        if (location == 'tleft'){
+            loc = '1';
+        }else if (location == 'tmiddle'){
+            loc = '2';
+        }else if (location == 'tright'){
+            loc = '3';
+        }
+
+        //ADD LOC AND WEBSITEURL TO THE UPLOAD URL ONCE ITS READY
             
         var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car;
         fetch(url, {
@@ -135,6 +148,7 @@
         //allow alphabetical sorting/filtering on the table
     //Delete functionality
     //Upload Model add the new columns
+        //the new selection should be there, just need to push it to the url
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
@@ -202,10 +216,25 @@
     </div>
 
     <div class = "input-boxes">
+        <label for="websiteUrl">Website URL (Only for Car Models): </label>
+        <input type="text" id="websiteUrl" name="websiteUrl"><br><br>
+    </div>
+
+    <div class = "input-boxes">
         <label for="type">Type: </label>
         <select id="type" name="type">
             <option value="car">Car</option>
             <option value="accessory">Accessory</option>
+        </select><br><br>
+    </div>
+
+    <div class = "input-boxes">
+        <label for="location">Accessory Location (Select N/A if model is a Car): </label>
+        <select id="location" name="location">
+            <option value="na">Not Applicable</option>
+            <option value="tleft">Top Left</option>
+            <option value="tmiddle">Top Middle</option>
+            <option value="tright">Top Right</option>
         </select><br><br>
     </div>
 
