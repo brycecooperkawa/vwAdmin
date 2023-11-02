@@ -102,9 +102,9 @@
             var modelInfo = data[i];
 
             if (modelInfo[3] == '1'){
-                addRow(modelInfo[0], modelInfo[1], "Test", "Car", "Test");
+                addRow(modelInfo[0], modelInfo[1], modelInfo[3], "Car", "N/A");
             }else{
-                addRow(modelInfo[0], modelInfo[1], "Test", "Accessory", "Test");
+                addRow(modelInfo[0], modelInfo[1], "N/A", "Accessory", modelInfo[4]);
             }
         }
     }
