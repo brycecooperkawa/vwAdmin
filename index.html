@@ -23,11 +23,15 @@
             fetch(url, {
                 method: 'GET'
             }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
                 console.log('Request sent successfully');
+                alert("Account Created Successfully");
             }).catch(error => {
                 console.error('Error sending request:', error);
+                alert("Account creation failed. Please try again later.");
             });
-            alert("Account Created Successfully");
         }
 
     }
