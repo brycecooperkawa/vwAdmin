@@ -69,24 +69,15 @@
         cell3.innerHTML = type;
     }
 
-    //example url to show can pull from one, will delete soon
-    //const requestUrl = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
-    const requestUrl = 'https://clrddiepd6pcxqmj5jscpg6cki0capjo.lambda-url.us-east-2.on.aws/';
-
-    //var data = [["","",""],["VWATLAS","https:\/\/id-buzz.s3.us-east-2.amazonaws.com\/VWATLAS.usdz","1"],["vwatlas_low","https:\/\/id-buzz.s3.us-east-2.amazonaws.com\/vwatlas_low.usdz","1"],["VWBUZZ","https:\/\/id-buzz.s3.us-east-2.amazonaws.com\/VWBUZZ.usdz","1"],["vwbuzz_low","https:\/\/id-buzz.s3.us-east-2.amazonaws.com\/vwbuzz_low.usdz","1"]]
+    //parse the data currently in the table, then add to the table
+    const requestUrl = 'https://clrddiepd6pcxqmj5jscpg6cki0capjo.lambda-url.us-east-2.on.aws/'
     var data;
-        
     const requestJSON = async url => {
 
         const response = await (await fetch(url)).json();
 
-        console.log(response.data)
-        
-        //for actual use
-        //current issue is https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
         data=response.data
-        //then parse from here
-        
+       
         var dataLength = data.length;
         for (var i = 0; i < dataLength; i++) {
             var modelInfo = data[i];
@@ -100,6 +91,15 @@
     }
 
     requestJSON(requestUrl);
+
+    //TO DO
+    //Fix errors for upload and create account
+        //add error popups for both that work and dont show up everytime
+    //Table stuff
+        //allow editing directly from the table
+            //use existing delete and upload functions for that and figure out how to make a row inputable on button click
+        //allow deleting directly from the table
+        //allow alphabetical sorting/filtering on the table
     
     </script>
 
