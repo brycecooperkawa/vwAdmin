@@ -90,9 +90,7 @@
             }else{
                 addRow(modelInfo[0], modelInfo[1], "Accessory");
             }
-            
         }
-        
     }
 
     requestJSON(requestUrl);
@@ -157,8 +155,11 @@
     </div>
 
     <div class = "input-boxes">
-        <label for="car">Car (1 for Yes, 0 for No): </label>
-        <input type="text" id="car" name="car"><br><br>
+        <label for="type">Type: </label>
+        <select id="type" name="type">
+            <option value="car">Car</option>
+            <option value="accessory">Accessory</option>
+        </select><br><br>
     </div>
 
 <button onclick="uploadModel()">Upload Model</button>
