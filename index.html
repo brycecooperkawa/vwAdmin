@@ -55,6 +55,8 @@
             console.error('Error sending request:', error);
         });
         alert("Model Uploaded");
+
+        updateTable()
     }
 
     //function that adds rows to the table
@@ -71,7 +73,7 @@
 
     //function that clears all rows from table, then updates it
     //called after a model is uploaded so the table updates without having to refresh the page
-    function clearTable() {
+    function updateTable() {
         //clears table
         var table = document.getElementById("database-table");
         var rowCount = table.rows.length;
