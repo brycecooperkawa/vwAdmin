@@ -39,7 +39,7 @@
             
         var modelName = document.getElementById('modelName').value;
         var modelUrl = document.getElementById('modelUrl').value;
-        var websiteUrl = document.getElementByID('websiteUrl').value;
+        var websiteUrl = document.getElementById('websiteUrl').value;
         var type = document.getElementById('type').value;
         var location = document.getElementById('location').value;
         
@@ -58,6 +58,7 @@
         }
             
         var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + "modelUrl" + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
+        console.log(url);
         fetch(url, {
             method: 'GET'
         }).then(response => {
