@@ -97,7 +97,7 @@
     function deleteModel(name, type){
         event.preventDefault();
         
-        var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname="+ name +"&Car=" + type;
+        var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=hello&Car=0";
         fetch(url, {
             method: 'GET'
         }).then(response => {
@@ -258,6 +258,7 @@
     </div>
 
 <button onclick="uploadModel()">Upload Model</button>
+<button onclick="deleteModel()">Delete</button>
 
 </form>
 
