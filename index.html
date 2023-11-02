@@ -96,16 +96,25 @@
     }
 
     function deleteModel(name, type){
+        var confirmed = confirm("Are you sure you want to delete the " + name + " model?");
+        if (confirmed) {
+            //prefrom deletion
+            // Your delete logic here
+            alert(name + " has been deleted.");
+        } else {
+            //delete canceled
+            alert("Deletion of " + name + " was cancelled.");
+        }
+        
         event.preventDefault();
 
         var car = '1';
         if (type == 'Accessory'){
             car = '0';
         }
-        console.log(name, type);
         
         var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
-        console.log(url);
+
         fetch(url, {
             method: 'POST'
         }).then(response => {
@@ -169,8 +178,10 @@
         //ERROR POPS UP ON CREATE ACCOUNT, UPLOAD AND DELETE FOR SAME PERMISSION REASONS AS VIEW WAS HAVING, FUNCTIONS FINE BUT FOR FIXED ERRORS NEED API FIXED/HEADER ADDED
     //Table stuff
         //allow editing directly from the table
-            //use existing delete and upload functions for that and figure out how to make a row inputable on button click
+            //rows being inputable and then confirm to edit an entry directly
         //allow alphabetical sorting/filtering on the table
+    //try and get upload and create account to clear the forms on enter without breaking it
+    //and comments to code
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
