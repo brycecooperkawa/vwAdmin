@@ -99,32 +99,30 @@
         var confirmed = confirm("Are you sure you want to delete the " + name + " model?");
         if (confirmed) {
             //prefrom deletion
-            // Your delete logic here
+            event.preventDefault();
+
+            var car = '1';
+            if (type == 'Accessory'){
+                car = '0';
+            }
+        
+            var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
+
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
             alert(name + " has been deleted.");
+            
+            updateTable();
+            
         } else {
             //delete canceled
             alert("Deletion of " + name + " was cancelled.");
         }
-        
-        event.preventDefault();
-
-        var car = '1';
-        if (type == 'Accessory'){
-            car = '0';
-        }
-        
-        var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
-
-        fetch(url, {
-            method: 'POST'
-        }).then(response => {
-            console.log('Request sent successfully');
-        }).catch(error => {
-            console.error('Error sending request:', error);
-        });
-        alert("Model Deleted");
-
-        updateTable();
     }
 
     //function that clears all rows from table, then updates it
