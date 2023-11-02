@@ -24,11 +24,11 @@
                 method: 'GET'
             }).then(response => {
                 console.log('Request sent successfully');
+                alert("Account Created Successfully");
             }).catch(error => {
-                alert("Test")
                 console.error('Error sending request:', error);
+                alert("Account Creation Failed. Please Try Again");
             });
-            alert("Account Created Successfully");
         }
 
     }
