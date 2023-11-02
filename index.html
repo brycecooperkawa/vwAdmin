@@ -80,8 +80,9 @@
         //data=response.data
         //then parse from here
         console.log(data)
-        for (model in data){
-            console.log(model)
+        var dataLength = data.length;
+        for (var i = 0; i < dataLength; i++) {
+            console.log(data[i]);
         }
         
     }
