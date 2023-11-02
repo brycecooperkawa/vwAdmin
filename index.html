@@ -65,12 +65,12 @@
         cell3.innerHTML = type;
     }
 
-    const requestUrl = 'https://5nzaz3yjyqxt4pvbkrwblpe4q40mrosg.lambda-url.us-east-2.on.aws/';
+    const requestUrl = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
 
     const requestJSON = async url => {
 
         const response = await (await fetch(url)).json();
-        console.log(response.data);
+        console.log(response.members);
     }
 
     requestJSON(requestUrl);
