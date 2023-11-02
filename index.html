@@ -103,19 +103,16 @@
         }
         
         var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
-        console.log(url);
-        /*
         fetch(url, {
-            method: 'GET'
+            method: 'POST'
         }).then(response => {
             console.log('Request sent successfully');
         }).catch(error => {
             console.error('Error sending request:', error);
         });
         alert("Model Deleted");
-        */
 
-        //updateTable();
+        updateTable();
     }
 
     //function that clears all rows from table, then updates it
