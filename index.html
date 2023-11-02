@@ -101,7 +101,7 @@
         for (var i = 0; i < dataLength; i++) {
             var modelInfo = data[i];
 
-            if (modelInfo[3] == '1'){
+            if (modelInfo[2] == '1'){
                 addRow(modelInfo[0], modelInfo[1], modelInfo[3], "Car", "N/A");
             }else{
                 addRow(modelInfo[0], modelInfo[1], "N/A", "Accessory", modelInfo[4]);
