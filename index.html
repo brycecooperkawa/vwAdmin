@@ -99,12 +99,13 @@
         event.preventDefault();
 
         var car = '1';
-        if (type == 'accessory'){
+        if (type == 'Accessory'){
             car = '0';
         }
         console.log(name, type);
         
         var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
+        console.log(url);
         fetch(url, {
             method: 'POST'
         }).then(response => {
@@ -165,14 +166,11 @@
 
     //TO DO
     //Fix errors for upload and create account
-        //add error popups for both that work and dont show up everytime
+        //ERROR POPS UP ON CREATE ACCOUNT, UPLOAD AND DELETE FOR SAME PERMISSION REASONS AS VIEW WAS HAVING, FUNCTIONS FINE BUT FOR FIXED ERRORS NEED API FIXED/HEADER ADDED
     //Table stuff
         //allow editing directly from the table
             //use existing delete and upload functions for that and figure out how to make a row inputable on button click
-        //allow deleting directly from the table
         //allow alphabetical sorting/filtering on the table
-    //Upload Model add the new columns
-        //the new selection should be there, just need to push it to the url
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
