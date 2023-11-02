@@ -96,9 +96,15 @@
 
     function deleteModel(name, type){
         event.preventDefault();
-        console.log(name,type);
+
+        var car = '1';
+        if (type == 'accessory'){
+            car = '0';
+        }
+
+        console.log(name,car);
         
-        var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + type;
+        var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
         fetch(url, {
             method: 'GET'
         }).then(response => {
