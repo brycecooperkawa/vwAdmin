@@ -65,11 +65,10 @@
             method: 'POST'
         }).then(response => {
             console.log('Request sent successfully');
-            alert("Model Uploaded");
         }).catch(error => {
             console.error('Error sending request:', error);
-            alert("Model Upload Failed");
         });
+        alert("Model Uploaded");
 
         updateTable()
     }
