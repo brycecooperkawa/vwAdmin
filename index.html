@@ -83,6 +83,7 @@
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
         cell1.innerHTML = name;
         cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
         if (wUrl == "N/A"){
@@ -93,6 +94,7 @@
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel()">Edit</span>';
     }
 
     function deleteModel(name, type){
@@ -123,6 +125,10 @@
             //delete canceled
             alert("Deletion of " + name + " was cancelled.");
         }
+    }
+
+    function editModel(){
+        console.log("Hello");
     }
 
     //function that clears all rows from table, then updates it
@@ -230,6 +236,7 @@
         <th>Type</th>
         <th>Accessory Location</th>
         <th>Delete Entry</th>
+        <th>Edit Entry</th>
     </tr>
 </table>
 
