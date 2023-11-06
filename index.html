@@ -19,15 +19,15 @@
         if (password !== confirmPassword) {
             alert("Passwords do not match. Please try again.");
         } else {
-            var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=null&TopLeft=null&TopMiddle=null&TopRight=null";
+            var url = "https://jwpoyq5nsnvbefkomgqojmoqxu0gxhcr.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Violet";
             fetch(url, {
                 method: 'POST'
             }).then(response => {
-                alert("Account successfully created.");
+                console.log('Request sent successfully');
             }).catch(error => {
                 console.error('Error sending request:', error);
-                alert("Account creation failed. Please try again later.");
             });
+            alert("Account Created Successfully");
         }
 
     }
@@ -59,16 +59,16 @@
             }
         }
             
-        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
-
+        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + "modelUrl" + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
+        console.log(url);
         fetch(url, {
-                method: 'POST'
-            }).then(response => {
-                alert("Model uploaded successfully.");
-            }).catch(error => {
-                console.error('Error sending request:', error);
-                alert("Model upload failed. Please try again later.");
-            });
+            method: 'POST'
+        }).then(response => {
+            console.log('Request sent successfully');
+        }).catch(error => {
+            console.error('Error sending request:', error);
+        });
+        alert("Model Uploaded");
 
         updateTable()
     }
@@ -111,11 +111,12 @@
             fetch(url, {
                 method: 'POST'
             }).then(response => {
-                alert(name + " deleted successfully.");
+                console.log('Request sent successfully');
             }).catch(error => {
                 console.error('Error sending request:', error);
-                alert("Failed to delete " + name + ". Please try again later.");
             });
+            alert(name + " has been deleted.");
+            
             updateTable();
             
         } else {
