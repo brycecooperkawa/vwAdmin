@@ -111,12 +111,16 @@
             fetch(url, {
                 method: 'POST'
             }).then(response => {
-                console.log('Request sent successfully');
+                if (response.ok) {
+                    alert(name + " has been deleted.");
+                    console.log('Deleting:', name, type);
+                } else {
+                    throw new Error('Request failed with status ' + response.status);
+                }
             }).catch(error => {
                 console.error('Error sending request:', error);
-                console.log('Nope');
+                alert("Failed to delete " + name + ". Please try again later.");
             });
-            alert(name + " has been deleted.");
             
             updateTable();
             
