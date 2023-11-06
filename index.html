@@ -65,10 +65,11 @@
             method: 'POST'
         }).then(response => {
             console.log('Request sent successfully');
+            alert("Model Uploaded");
         }).catch(error => {
             console.error('Error sending request:', error);
+            alert("Model Upload Failed");
         });
-        alert("Model Uploaded");
 
         updateTable()
     }
@@ -181,6 +182,9 @@
         //allow alphabetical sorting/filtering on the table
     //try and get upload and create account to clear the forms on enter without breaking it
     //and comments to code
+    //make upload form edit based on car or accessory
+            //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
+                //Delete sometimes takes two clicks before it works
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
