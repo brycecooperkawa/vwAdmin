@@ -109,7 +109,7 @@
             var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
 
             fetch(url, {
-                method: 'DELETE'
+                method: 'POST'
             }).then(response => {
                 if (response.ok) {
                     alert(name + " has been deleted.");
