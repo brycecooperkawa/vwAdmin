@@ -66,7 +66,12 @@
         var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
 
         fetch(url, {
-            method: 'POST'
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Origin': 'https://brycecooperkawa.github.io/vwAdmin/'
+        }
         }).then(response => {
                 if (response.ok) {
                     alert("Model uploaded successfully.");
@@ -119,13 +124,16 @@
             fetch(url, {
                 method: 'POST'
             }).then(response => {
-                console.log('Request sent successfully');
+                if (response.ok) {
+                    alert(name + " deleted successfully.");
+                    console.log('Deleting:', name, type);
+                } else {
+                    throw new Error('Request failed with status ' + response.status);
+                }
             }).catch(error => {
                 console.error('Error sending request:', error);
                 alert("Failed to delete " + name + ". Please try again later.");
-                break;
             });
-            alert(name + " was deleted.");
             
             updateTable();
             
