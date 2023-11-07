@@ -41,7 +41,8 @@
     function uploadModel(){
 
         event.preventDefault();
-            
+
+        //get info from the html form
         var modelName = document.getElementById('modelName').value;
         var modelUrl = document.getElementById('modelUrl').value;
         var websiteUrl = document.getElementById('websiteUrl').value;
@@ -67,7 +68,13 @@
             }
         }
 
-        if (check == '1'){
+        if (modelName == ""){
+            check = 2;
+        }else if (modelUrl == ""){
+            check = 3;
+        }
+
+        if (check == 1){
             var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + "modelUrl" + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
             console.log(url);
             fetch(url, {
@@ -94,8 +101,12 @@
                 updateTable();
             }, 5000);
             
-        }else{
+        }else if (check == 0){
             alert("Please select a model type and try again.");
+        }else if (check == 2){
+            alert("Please enter a model name and try again.");
+        }else if (check == 3){
+            alert("Please enter a model S3 url and try again.");
         }
         
     }
