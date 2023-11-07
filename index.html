@@ -177,17 +177,17 @@
 
     requestJSON(requestUrl);
 
-    function toggleFields() {
+    function optionsToggle() {
         var type = document.getElementById('type').value;
         var websiteUrlField = document.getElementById('websiteUrlField');
         var locationField = document.getElementById('locationField');
 
         if (type == 'car') {
             websiteUrlField.style.display = 'block';
-            locationField.style.display = 'none';
+            //locationField.style.display = 'none';
             document.getElementById('location').value = '0';
         } else if (type == 'accessory') {
-            websiteUrlField.style.display = 'none';
+            //websiteUrlField.style.display = 'none';
             locationField.style.display = 'block';
             document.getElementById('websiteUrl').value = "Michael Jeffery Jordan";
         }
