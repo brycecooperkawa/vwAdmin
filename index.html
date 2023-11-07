@@ -74,7 +74,10 @@
             });
             alert("Model Uploaded");
 
-            updateTable()
+            //Wait 5 seconds before updating table
+            setTimeout(function() {
+                updateTable();
+            }, 5000);
             
         }else{
             alert("Please select a model type and try again.");
@@ -127,8 +130,11 @@
                 console.error('Error sending request:', error);
             });
             alert(name + " has been deleted.");
-            
-            updateTable();
+
+            //Wait 5 seconds before updating table
+            setTimeout(function() {
+                updateTable();
+            }, 5000);
             
         } else {
             //delete canceled
@@ -195,6 +201,7 @@
             websiteUrlField.style.display = 'block';
             locationField.style.display = 'none';
             document.getElementById('location').value = '0';
+            document.getElementById('websiteUrl').value = "";
         } else if (type == 'accessory') {
             websiteUrlField.style.display = 'none';
             locationField.style.display = 'block';
@@ -216,13 +223,11 @@
             //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
                 //Delete sometimes takes two clicks before it works
                 //Refresh normally fixes this, add a refresh table button
+                    //Or have a function running every 10 sec in background checking for table growth or shrink then call update table
+                    //or make the upload and delete wait a little before updating table
 
     //THINGS DONE THIS WEEK
-    //added dynamically updating table that pulls from url
-    //created function that can add rows
-    //function that updates the table on upload
-    //changed the part of upload models to be a dropdown choice box for car or accessory
-    //Delete functionality
+    
     
     </script>
 
