@@ -132,7 +132,7 @@
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(2)">Edit</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + table.rows.length + '\')">Edit</span>';
     }
 
     function deleteModel(name, type){
@@ -169,7 +169,7 @@
     }
 
     function editModel(rowId) {
-        console.log("hello");
+        console.log(rowId);
     }
 
     //function that clears all rows from table, then updates it
