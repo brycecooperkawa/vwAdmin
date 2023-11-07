@@ -195,11 +195,11 @@
         }
 
         var editCell = row.cells[row.cells.length - 1];
-        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel(' + rowNumber + ')">Save</span>';
+        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel()">Save</span>';
         console.log(editCell.innerHTML);
     }
 
-    function saveModel(rowNumber){
+    function saveModel(){
         console.log("Hello");
     }
 
