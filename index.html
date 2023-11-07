@@ -154,13 +154,13 @@
     }
 
     //parse the data currently in the table, then add to the table
-    const requestUrl = 'https://clrddiepd6pcxqmj5jscpg6cki0capjo.lambda-url.us-east-2.on.aws/'
+    const requestUrl = 'https://clrddiepd6pcxqmj5jscpg6cki0capjo.lambda-url.us-east-2.on.aws/';
     var data;
     const requestJSON = async url => {
 
         const response = await (await fetch(url)).json();
 
-        data=response.data
+        data=response.data;
        
         var dataLength = data.length;
         for (var i = 0; i < dataLength; i++) {
