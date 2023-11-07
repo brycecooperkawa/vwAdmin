@@ -74,7 +74,7 @@
             });
             alert("Model Uploaded");
 
-            //clear form
+            //clear/reset form
             document.getElementById('modelName').value = "";
             document.getElementById('modelUrl').value = "";
             document.getElementById('websiteUrl').value = "";
@@ -83,6 +83,11 @@
             typeDropdown = "";
             var locationDropdown = document.getElementById('type');
             locationDropdown = "tleft";
+
+            var websiteUrlField = document.getElementById('websiteUrlField');
+            websiteUrlField.style.display = 'none';
+            var locationField = document.getElementById('locationField');
+            locationField.style.display = 'none';
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
