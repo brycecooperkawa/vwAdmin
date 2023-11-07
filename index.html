@@ -19,7 +19,7 @@
         if (password !== confirmPassword) {
             alert("Passwords do not match. Please try again.");
         } else {
-            var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=null&TopLeft=null&TopMiddle=null&TopRight=null";
+            var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=" + null + "&TopLeft=" + null + "&TopMiddle=" + null + "&TopRight=" + null;
             fetch(url, {
                 method: 'POST'
             }).then(response => {
@@ -168,11 +168,28 @@
         }
     }
 
+    //on edit cell click, make the row editable
+    //edit becomes a save which then takes you to save
     function editModel(rowId) {
+        //get table and the row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
 
-        console.log(row.cells[0]);
+        //get all cells from the row and make them editable
+        for (var i = 0; i < row.cells.length - 2; i++) {
+            var cell = row.cells[i];
+            var cellData = cell.innerHTML;
+
+            //make the cell an input
+            cell.innerHTML = '<input type="text" value="' + cellData + '">';
+        }
+
+        var editCell = row.cells[row.cells.length - 1];
+        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel(' + rowNumber + ')">Save</span>';
+    }
+
+    function saveModel(rowNumber){
+        console.log("Hello");
     }
 
     //function that clears all rows from table, then updates it
