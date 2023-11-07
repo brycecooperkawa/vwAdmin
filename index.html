@@ -74,6 +74,16 @@
             });
             alert("Model Uploaded");
 
+            //clear form
+            document.getElementById('modelName').value = "";
+            document.getElementById('modelUrl').value = "";
+            document.getElementById('websiteUrl').value = "";
+
+            var typeDropdown = document.getElementById('type');
+            typeDropdown = "";
+            var locationDropdown = document.getElementById('type');
+            locationDropdown = "tleft";
+
             //Wait 5 seconds before updating table
             setTimeout(function() {
                 updateTable();
@@ -211,7 +221,6 @@
 
     //TO DO
     //Fix errors for upload and create account
-        //ERROR POPS UP ON CREATE ACCOUNT, UPLOAD AND DELETE FOR SAME PERMISSION REASONS AS VIEW WAS HAVING, FUNCTIONS FINE BUT FOR FIXED ERRORS NEED API FIXED/HEADER ADDED
         //make the upload and create account alerts be specialized similar to delete ie. VWBUZZ was uploaded/Bryce account was created.
     //Table stuff
         //allow editing directly from the table
@@ -219,15 +228,14 @@
         //allow alphabetical sorting/filtering on the table
     //try and get upload and create account to clear the forms on enter without breaking it
     //and comments to code
-    //make upload form edit based on car or accessory
-            //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
-                //Delete sometimes takes two clicks before it works
-                //Refresh normally fixes this, add a refresh table button
-                    //Or have a function running every 10 sec in background checking for table growth or shrink then call update table
-                    //or make the upload and delete wait a little before updating table
+    //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
+        //Delete sometimes takes two clicks before it works
+        //Refresh normally fixes this, add a refresh table button
+            //Or have a function running every 10 sec in background checking for table growth or shrink then call update table
+            //or make the upload and delete wait a little before updating table
 
     //THINGS DONE THIS WEEK
-    
+    //Upload form updates based on type
     
     </script>
 
