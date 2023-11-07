@@ -180,11 +180,22 @@
             var cell = row.cells[i];
             var cellData = cell.innerHTML;
 
+            //if cell is modelurl/websiteurl
+                //set cell to clear
+                //ex: cell2.innerHTML = '';
+                //then make it an input
+                //then send it to saveModel function
+                    //in saveModel function turn it back into a real url
+                    //ex: cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
+
+            //if cell is type/location do something similar, try to make it a dropdown instead of a input box
+
             //make the cell an input
             cell.innerHTML = '<input type="text" value="' + cellData + '">';
         }
 
         var editCell = row.cells[row.cells.length - 1];
+        console.log(editCell.innerHTML);
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel(' + rowNumber + ')">Save</span>';
     }
 
