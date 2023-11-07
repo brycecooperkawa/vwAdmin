@@ -86,7 +86,7 @@
         var cell7 = row.insertCell(6);
         cell1.innerHTML = name;
         cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
-        if (wUrl == "N/A"){
+        if (wUrl == "Michael Jeffery Jordan"){
             cell3.innerHTML = "N/A";
         }else{
             cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
@@ -94,7 +94,7 @@
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel()">Edit</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(2)">Edit</span>';
     }
 
     function deleteModel(name, type){
@@ -127,8 +127,8 @@
         }
     }
 
-    function editModel(){
-        console.log("Hello");
+    function editModel(rowId) {
+        console.log("hello");
     }
 
     //function that clears all rows from table, then updates it
@@ -177,6 +177,22 @@
 
     requestJSON(requestUrl);
 
+    function toggleFields() {
+        var type = document.getElementById('type').value;
+        var websiteUrlField = document.getElementById('websiteUrlField');
+        var locationField = document.getElementById('locationField');
+
+        if (type == 'car') {
+            websiteUrlField.style.display = 'block';
+            locationField.style.display = 'none';
+            document.getElementById('location').value = '0';
+        } else if (type == 'accessory') {
+            websiteUrlField.style.display = 'none';
+            locationField.style.display = 'block';
+            document.getElementById('websiteUrl').value = "Michael Jeffery Jordan";
+        }
+    }
+
     //TO DO
     //Fix errors for upload and create account
         //ERROR POPS UP ON CREATE ACCOUNT, UPLOAD AND DELETE FOR SAME PERMISSION REASONS AS VIEW WAS HAVING, FUNCTIONS FINE BUT FOR FIXED ERRORS NEED API FIXED/HEADER ADDED
@@ -190,6 +206,7 @@
     //make upload form edit based on car or accessory
             //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
                 //Delete sometimes takes two clicks before it works
+                //Refresh normally fixes this, add a refresh table button
 
     //THINGS DONE THIS WEEK
     //added dynamically updating table that pulls from url
@@ -260,16 +277,16 @@
     </div>
 
     <div class = "input-boxes">
-        <label for="websiteUrl">Website URL (Only for Car Models): </label>
-        <input type="text" id="websiteUrl" name="websiteUrl"><br><br>
-    </div>
-
-    <div class = "input-boxes">
         <label for="type">Type: </label>
-        <select id="type" name="type">
+        <select id="type" name="type" onchange="optionsToggle()">
             <option value="car">Car</option>
             <option value="accessory">Accessory</option>
         </select><br><br>
+    </div>
+
+    <div class = "input-boxes">
+        <label for="websiteUrl">Website URL (Only for Car Models): </label>
+        <input type="text" id="websiteUrl" name="websiteUrl"><br><br>
     </div>
 
     <div class = "input-boxes">
