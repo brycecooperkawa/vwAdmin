@@ -96,4 +96,8 @@ button {
     text-align: center;
 }
 
+#websiteUrlField, #locationField {
+    display: none;
+}
+
     
