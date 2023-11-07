@@ -169,7 +169,10 @@
     }
 
     function editModel(rowId) {
-        console.log(rowId);
+        var table = document.getElementById("database-table");
+        var row = table.rows[rowId];
+
+        console.log(row.cells[0]);
     }
 
     //function that clears all rows from table, then updates it
