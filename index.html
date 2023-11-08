@@ -179,6 +179,8 @@
             var cell = row.cells[i];
             var cellData = cell.innerHTML;
 
+            cell.innerHTML = '<input type="text" value="' + cellData + '">';
+
             /*
             if (i == 0){
                 cell.innerHTML = '<input type="text" value="' + cellData + '">';
