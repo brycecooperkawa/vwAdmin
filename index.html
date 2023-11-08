@@ -10,14 +10,18 @@
 
     //create account functionality
     function createAccountDatabase() {
+        //avoid changing the url with normal form submission
         event.preventDefault();
-            
+
+        //get the necessary info from the html form
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var confirmPassword = document.getElementById('confirmPassword').value;
 
+        //check that passwords match before attempting account creation
         if (password !== confirmPassword) {
             alert("Passwords do not match. Please try again.");
+        //if passwords match then create the account
         } else {
             var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=" + null + "&TopLeft=" + null + "&TopMiddle=" + null + "&TopRight=" + null;
             fetch(url, {
@@ -38,7 +42,7 @@
 
     //upload model to database functionality
     function uploadModel(){
-
+        //avoid normal form submission
         event.preventDefault();
 
         //get info from the html form
@@ -47,15 +51,19 @@
         var websiteUrl = document.getElementById('websiteUrl').value;
         var type = document.getElementById('type').value;
         var location = document.getElementById('location').value;
-        
+
+        //convert the text to the "bool", 1 for car model, 0 for accessory model
         var car = '1';
+        //variable check to check all inputs as vaild
         var check = 1;
         if (type == 'accessory'){
             car = '0';
+        //if the type is 0 set the check variable to 0 for set type alert
         }else if (type == ""){
             check = 0;
         }
 
+        //convert the location values to loc so they can be used in the url
         var loc = '0';
         if (car == '0'){
             if (location == 'tleft'){
@@ -67,12 +75,14 @@
             }
         }
 
+        //check for modelName and modelUrl being entered, if not then alert user using check
         if (modelName == ""){
             check = 2;
         }else if (modelUrl == ""){
             check = 3;
         }
 
+        //if check is one everything is entered, now upload the model
         if (check == 1){
             var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
             fetch(url, {
@@ -88,7 +98,6 @@
             document.getElementById('modelName').value = "";
             document.getElementById('modelUrl').value = "";
             document.getElementById('websiteUrl').value = "";
-
             var typeDropdown = document.getElementById('type');
             typeDropdown = "";
             var locationDropdown = document.getElementById('location');
@@ -98,7 +107,8 @@
             setTimeout(function() {
                 updateTable();
             }, 5000);
-            
+
+        //check fail alerts
         }else if (check == 0){
             alert("Please select a model type and try again.");
         }else if (check == 2){
@@ -111,7 +121,10 @@
 
     //function that adds rows to the table
     function addRow(name, mUrl, wUrl, type, loc) {
+        //get the table
         var table = document.getElementById("database-table");
+        
+        //create a row and the cells to insert in that row
         var row = table.insertRow(table.rows.length);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -120,25 +133,34 @@
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         var cell7 = row.insertCell(6);
+
+        //fill out the cells
         cell1.innerHTML = name;
         cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
-        if (wUrl == "Michael Jeffery Jordan"){
+        //if accessory then set the display to N/A
+        if (wUrl == "MichaelJefferyJordan" || wUrl == "KobeBeanBryant"){
             cell3.innerHTML = "N/A";
+        //if car set as link
         }else{
             cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
         }
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
+        //delete button that takes model name and type
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
+        //edit button that takes row number, modelUrl, webUrl
         cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\')">Edit</span>';
     }
 
+    //deletes the model from the database
     function deleteModel(name, type){
+        //ask the user if they want to delete model
         var confirmed = confirm("Are you sure you want to delete the " + name + " model?");
+        //prefrom deletion
         if (confirmed) {
-            //prefrom deletion
             event.preventDefault();
 
+            //get the proper var for the url from the type var
             var car = '1';
             if (type == 'Accessory'){
                 car = '0';
@@ -155,7 +177,7 @@
             });
             alert(name + " has been deleted.");
 
-            //Wait 5 seconds before updating table
+            //wait 5 seconds before updating table
             setTimeout(function() {
                 updateTable();
             }, 5000);
@@ -187,7 +209,8 @@
         for (var i = 0; i < row.cells.length - 2; i++) {
             var cell = row.cells[i];
             var cellData = cell.innerHTML;
-            
+
+            //sets the cells as text entries if they should be
             if (i == 0){
                 cell.innerHTML = '<input type="text" id="editModelName" name="editModelName" value="' + cellData + '">';
             }else if (i == 1){
@@ -200,7 +223,7 @@
             
         }
 
-        //change edit option to save
+        //change edit option to save/cancel
         var editCell = row.cells[row.cells.length - 1];
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveEditModel(\'' + rowId +  '\', \'' + origName +  '\')">Save</span>' +
             '<span style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;" onclick="updateTable()">Cancel</span>';
@@ -309,6 +332,7 @@
         for (var i = 0; i < dataLength; i++) {
             var modelInfo = data[i];
 
+            //based on if listed as car or accessory send addRow diff things
             if (modelInfo[2] == '1'){
                 //car
                 addRow(modelInfo[0], modelInfo[1], modelInfo[3], "Car", "N/A");
@@ -329,16 +353,20 @@
 
     requestJSON(requestUrl);
 
+    //based on which type is selected in the form, display different options
     function optionsToggle() {
+        //get the type and the fields that will or won't be shown
         var type = document.getElementById('type').value;
         var websiteUrlField = document.getElementById('websiteUrlField');
         var locationField = document.getElementById('locationField');
 
+        //if car show the webUrl and hide the location
         if (type == 'car') {
             websiteUrlField.style.display = 'block';
             locationField.style.display = 'none';
             document.getElementById('location').value = '0';
             document.getElementById('websiteUrl').value = "";
+        //if accessory vice versa
         } else if (type == 'accessory') {
             websiteUrlField.style.display = 'none';
             locationField.style.display = 'block';
@@ -347,25 +375,20 @@
     }
 
     //TO DO
-    //Fix errors for upload and create account
-        //make the upload and create account alerts be specialized similar to delete ie. VWBUZZ was uploaded/Bryce account was created.
     //Table stuff
-        //allow editing directly from the table
-            //rows being inputable and then confirm to edit an entry directly
         //allow alphabetical sorting/filtering on the table
-    //try and get upload and create account to clear the forms on enter without breaking it
-    //and comments to code
-    //DOUBLE CHECK THAT THE ADMIN PANEL WORKS EVERYTIME
-        //Delete sometimes takes two clicks before it works
-        //Refresh normally fixes this, add a refresh table button
-            //Or have a function running every 10 sec in background checking for table growth or shrink then call update table
-            //or make the upload and delete wait a little before updating table
 
     //THINGS DONE THIS WEEK
     //Upload form updates based on type
+    //allow editing directly from the table
+        //rows being inputable and then confirm to edit an entry directly
+        //added save functionality from the table
+        //added cancel of edit functionality
+    //fixed form clearing
     
     </script>
 
+    //used for model viewer https://modelviewer.dev/examples/loading/#customizeLoad
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
     
 </head>
