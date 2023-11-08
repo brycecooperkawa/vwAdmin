@@ -177,10 +177,20 @@
         // Loop through each cell in the row
         for (var i = 0; i < row.cells.length - 2; i++) {
             var cell = row.cells[i];
-            var cellContent = cell.innerHTML;
+            var cellData = cell.innerHTML;
 
-            // Replace the cell content with input fields
-            cell.innerHTML = '<input type="text" value="' + cellContent + '">';
+            cell.innerHTML = '<input type="text" value="' + cellData + '">';
+            
+            if (i == 0){
+                cell.innerHTML = '<input type="text" value="' + cellData + '">';
+            }else if (i == 1){
+                cell.innerHTML = '<input type="text" value="' + mUrl + '">';
+            }else if (i == 2){
+                cell.innerHTML = '<input type="text" value="' + wUrl + '">';
+            }else if (i == 3){
+                cell.innerHTML = '<select id="type" name="type"> <option value="car">Car</option> <option value="accessory">Accessory</option> </select>';
+            }
+            
         }
 
         // Change the "Edit" option to "Save"
