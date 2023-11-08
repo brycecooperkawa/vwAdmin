@@ -174,8 +174,12 @@
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
 
+        //based on the type, select which cells are editable or not
         var typeCell = row.cells[row.cells.length - 4];
-        console.log(typeCell.innerHTML);
+        var check = 1;
+        if (typeCell.innerHTML == "Accessory"){
+            check = 0;
+        }
 
         //loop thru all cells and make them editable
         for (var i = 0; i < row.cells.length - 2; i++) {
@@ -186,9 +190,9 @@
                 cell.innerHTML = '<input type="text" value="' + cellData + '">';
             }else if (i == 1){
                 cell.innerHTML = '<input type="text" value="' + mUrl + '">';
-            }else if (i == 2){
+            }else if (i == 2 && check == 1){
                 cell.innerHTML = '<input type="text" value="' + wUrl + '">';
-            }else if (i == 4){
+            }else if (i == 4 && check == 0){
                 cell.innerHTML = '<select id="location" name="location"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
             }
             
