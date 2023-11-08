@@ -34,7 +34,6 @@
         document.getElementById('username').value = "";
         document.getElementById('password').value = "";
         document.getElementById('confirmPassword').value = "";
-
     }
 
     //upload model to database functionality
@@ -179,6 +178,7 @@
         for (var i = 0; i < row.cells.length - 2; i++) {
             var cell = row.cells[i];
             var cellData = cell.innerHTML;
+            console.log(cellData);
 
             //if cell is modelurl/websiteurl
                 //set cell to clear
