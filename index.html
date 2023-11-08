@@ -131,7 +131,7 @@
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\')">Edit</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\')">Edit</span>';
     }
 
     function deleteModel(name, type){
@@ -169,7 +169,7 @@
 
     //on edit cell click, make the row editable
     //edit becomes a save which then takes you to save
-    function editModel(rowId) {
+    function editModel(rowId, mUrl, wUrl) {
         //get table and the row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId]; // Get the specific row to edit
