@@ -218,6 +218,7 @@
             }else if (i == 2 && check == 1){
                 cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
             }else if (i == 4 && check == 0){
+                console.log(cell.innerHTML);
                 cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
             }
             
@@ -257,7 +258,6 @@
             }
             car = '0';
         }
-        console.log(editLocation);
 
         var modelName = document.getElementById('editModelName').value;
         var modelUrl = document.getElementById('editModelUrl').value;
