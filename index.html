@@ -187,24 +187,24 @@
             var cellData = cell.innerHTML;
             
             if (i == 0){
-                cell.innerHTML = '<input type="text" value="' + cellData + '">';
+                cell.innerHTML = '<input type="text" id="editModelName" name="editModelName" value="' + cellData + '">';
             }else if (i == 1){
-                cell.innerHTML = '<input type="text" value="' + mUrl + '">';
+                cell.innerHTML = '<input type="text" id="editModelUrl" name="editModelUrl" value="' + mUrl + '">';
             }else if (i == 2 && check == 1){
-                cell.innerHTML = '<input type="text" value="' + wUrl + '">';
+                cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
             }else if (i == 4 && check == 0){
-                cell.innerHTML = '<select id="location" name="location"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
+                cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
             }
             
         }
 
         //change edit option to save
         var editCell = row.cells[row.cells.length - 1];
-        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel()">Save</span>';
+        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveEditModel()">Save</span>';
     }
 
-    function saveModel(){
-        console.log("Hello");
+    function saveEditModel(){
+        console.log(document.getElementById('editModelName').value);
     }
 
     //function that clears all rows from table, then updates it
