@@ -218,8 +218,14 @@
             }else if (i == 2 && check == 1){
                 cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
             }else if (i == 4 && check == 0){
-                console.log(cell.innerHTML);
-                cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
+                //have the option of location that the acc was initally set to still display as the first option
+                if (cell.innerHTML == "Top Left"){
+                    cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft" selected>Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
+                }else if (cell.innerHTML == "Top Middle"){
+                    cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle" selected>Top Middle</option> <option value="tright">Top Right</option> </select>';
+                }else if (cell.innerHTML == "Top Right"){
+                    cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright" selected>Top Right</option> </select>';
+                }
             }
             
         }
