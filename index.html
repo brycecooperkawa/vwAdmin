@@ -218,15 +218,7 @@
             }else if (i == 2 && check == 1){
                 cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
             }else if (i == 4 && check == 0){
-                //have the option of location that the acc was initally set to still display as the first option
                 cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
-                if (cell.innerHTML == "Top Left"){
-                    document.getElementById("editLocation").value = "tleft";
-                }else if (cell.innerHTML == "Top Middle"){
-                    document.getElementById("editLocation").value = "tmiddle";
-                }else if (cell.innerHTML == "Top Right"){
-                    document.getElementById("editLocation").value = "tright";
-                }
             }
             
         }
@@ -387,6 +379,7 @@
     //Table stuff
         //allow alphabetical sorting/filtering on the table
         //if they edit something to have the same name as an existing model?
+        //have the option of location that the acc was initally set to still display as the first option
 
     //THINGS DONE THIS WEEK
     //Upload form updates based on type
