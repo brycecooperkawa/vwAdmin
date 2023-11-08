@@ -173,6 +173,9 @@
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
 
+        //get original name to pass to save for delete functionality
+        var origName = row.cells[0].innerHTML;
+
         //based on the type, select which cells are editable or not
         var typeCell = row.cells[row.cells.length - 4];
         var check = 1;
@@ -199,12 +202,12 @@
 
         //change edit option to save
         var editCell = row.cells[row.cells.length - 1];
-        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveEditModel(\'' + rowId +  '\')">Save</span>';
+        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveEditModel(\'' + rowId +  '\', \'' + origName +  '\')">Save</span>';
     }
 
     //function called by save button that edit turns into
     //used to update the model in the database
-    function saveEditModel(rowId){
+    function saveEditModel(rowId, origName){
         //get table and row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
@@ -230,12 +233,57 @@
             car = '0';
         }
 
-        
         var modelName = document.getElementById('editModelName').value;
         var modelUrl = document.getElementById('editModelUrl').value;
 
-        var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
-        console.log(url);
+        //check to make sure that modelName and modelUrl are not left blank
+        var check = 1;
+        if (modelName == ""){
+            check = 2;
+        }else if (modelUrl == ""){
+            check = 3;
+        }
+
+        if (check == 1){
+            //prefrom deletion of model before edit
+            event.preventDefault();
+        
+            var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + origName + "&Car=" + car;
+
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
+
+            setTimeout(function() {
+                console.log("Processing Delete");
+            }, 5000);
+
+            //upload model with edits
+            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
+            alert("Model Updated");
+
+            //Wait 5 seconds before updating table
+            setTimeout(function() {
+                updateTable();
+            }, 5000);
+            
+        }else if (check == 2){
+            alert("Please enter a model name and try again.");
+        }else if (check == 3){
+            alert("Please enter a model S3 url and try again.");
+        }
+        
     }
 
     //function that clears all rows from table, then updates it
