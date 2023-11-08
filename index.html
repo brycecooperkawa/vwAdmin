@@ -214,7 +214,7 @@
         var type = typeCell.innerHTML;
 
         //get the inputs that are model type specific
-        var websiteUrl = "Kobe Bean Bryant";
+        var websiteUrl = "KobeBeanBryant";
         var loc = '0';
         var car = '1';
         if (type == "Car"){
@@ -232,7 +232,7 @@
 
         
         var modelName = document.getElementById('editModelName').value;
-        var modelUrl = document.getElementById('modelUrl').value;
+        var modelUrl = document.getElementById('editModelUrl').value;
 
         var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
         console.log(url);
@@ -297,7 +297,7 @@
         } else if (type == 'accessory') {
             websiteUrlField.style.display = 'none';
             locationField.style.display = 'block';
-            document.getElementById('websiteUrl').value = "Michael Jeffery Jordan";
+            document.getElementById('websiteUrl').value = "MichaelJefferyJordan";
         }
     }
 
