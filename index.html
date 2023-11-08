@@ -170,6 +170,7 @@
     //on edit cell click, make the row editable
     //edit becomes a save which then takes you to save
     function editModel(rowId, mUrl, wUrl) {
+        /*
         //get table and the row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
@@ -183,7 +184,6 @@
 
             cell.innerHTML = '<input type="text" value="' + cellData + '">';
 
-            /*
             if (i == 0){
                 cell.innerHTML = '<input type="text" value="' + cellData + '">';
             }else if (i == 1){
@@ -193,7 +193,7 @@
             }else if (i == 3){
                 cell.innerHTML = '<select id="type" name="type"> <option value="car">Car</option> <option value="accessory">Accessory</option> </select>';
             }
-            */
+            
 
             //if cell is modelurl/websiteurl
                 //set cell to clear
@@ -204,11 +204,13 @@
                     //ex: cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
 
             //if cell is type/location do something similar, try to make it a dropdown instead of a input box
+
         
         }
 
         var editCell = row.cells[row.cells.length - 1];
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel()">Save</span>';
+        */
     }
 
     function saveModel(){
