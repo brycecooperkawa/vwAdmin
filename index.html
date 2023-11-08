@@ -131,7 +131,7 @@
         cell4.innerHTML = type;
         cell5.innerHTML = loc;
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) + '\')">Edit</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1, mUrl, wUrl) + '\')">Edit</span>';
     }
 
     function deleteModel(name, type){
@@ -169,7 +169,7 @@
 
     //on edit cell click, make the row editable
     //edit becomes a save which then takes you to save
-    function editModel(rowId) {
+    function editModel(rowId, mUrl, wUrl) {
         //get table and the row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
@@ -178,7 +178,20 @@
         for (var i = 0; i < row.cells.length - 2; i++) {
             var cell = row.cells[i];
             var cellData = cell.innerHTML;
-            console.log(cellData);
+
+            if (i == 0){
+                cell.innerHTML = '<input type="text" value="' + cellData + '">';
+            }
+            }else if (i == 1){
+                cell.innerHTML = '<input type="text" value="' + mUrl + '">';
+            }else if (i == 2){
+                cell.innerHTML = '<input type="text" value="' + wUrl + '">';
+            }else if (i == 3){
+                cell.innerHTML = '<select id="type" name="type">
+                <option value="car">Car</option>
+                <option value="accessory">Accessory</option>
+                </select>';
+            }
 
             //if cell is modelurl/websiteurl
                 //set cell to clear
@@ -189,14 +202,11 @@
                     //ex: cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
 
             //if cell is type/location do something similar, try to make it a dropdown instead of a input box
-
-            //make the cell an input
-            cell.innerHTML = '<input type="text" value="' + cellData + '">';
+        
         }
 
         var editCell = row.cells[row.cells.length - 1];
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveModel()">Save</span>';
-        console.log(editCell.innerHTML);
     }
 
     function saveModel(){
