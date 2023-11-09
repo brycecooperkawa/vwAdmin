@@ -286,6 +286,8 @@
 
     //on user button click, adds another input fields for the user to enter another seat
     function addSeatInput() {
+        event.preventDefault();
+        
         var div = document.createElement('div');
         div.className = 'input-boxes';
         div.innerHTML = `<label for="positions">Enter Vehicle Positions (ex: 13, 26, 10): </label>
