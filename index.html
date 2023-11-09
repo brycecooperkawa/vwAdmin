@@ -465,10 +465,20 @@
         
         if (check == 1){
             //prefrom deletion of model before edit
-            deleteModel(origName, 0);
+            event.preventDefault();
+        
+            var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + origName + "&Car=0";
+
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
 
             //upload model with edits
-            var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=0&VWURL=" + null + "&Location=" + loc + "&Image=" + null;
+            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=0&VWURL=" + null + "&Location=" + loc + "&Image=" + null;
             fetch(url, {
                 method: 'POST'
             }).then(response => {
