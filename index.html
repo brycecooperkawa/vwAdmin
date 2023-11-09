@@ -448,9 +448,9 @@
 </div>
 <br>
     
-<!-- View Database -->
+<!-- View Vehicle Database -->
 <div class = "section-header">
-    <p>View Database</p>
+    <p>Vehicle Database</p>
 </div>
     
 <table id='database-table'>
@@ -467,9 +467,27 @@
 </table>
 
 <br><br>
-    
+
+<!-- View Accessory Database -->
 <div class = "section-header">
-    <p>Upload Model</p>
+    <p>Accessory Database</p>
+</div>
+    
+<table id='acc-database-table'>
+    <tr>
+        <th>Model Name</th>
+        <th>Model URL</th>
+        <th>Location</th>
+        <th>Delete Entry</th>
+        <th>Edit Entry</th>
+    </tr>
+</table>
+
+<br><br>
+
+<!-- Upload Vehicle -->
+<div class = "section-header">
+    <p>Upload Vehicle</p>
 </div>
 <br>
     
@@ -518,6 +536,40 @@
 </form>
 
 <br><br>
+
+<!-- Upload Accessory -->
+<div class = "section-header">
+    <p>Upload Accessory</p>
+</div>
+<br>
+    
+<form>
+    
+    <div class = "input-boxes">
+        <label for="modelName">Model Name: </label>
+        <input type="text" id="modelName" name="modelName"><br><br>
+    </div>
+
+    <div class = "input-boxes">
+        <label for="modelUrl">Model URL: </label>
+        <input type="text" id="modelUrl" name="modelUrl"><br><br>
+    </div>
+
+    <div class = "input-boxes" id="locationField">
+        <label for="location">Location: </label>
+        <select id="location" name="location">
+            <option value="tleft">Top Left</option>
+            <option value="tmiddle">Top Middle</option>
+            <option value="tright">Top Right</option>
+        </select><br><br>
+    </div>
+
+<button onclick="uploadModel()">Upload Model</button>
+
+</form>
+
+<br><br>
+
 
 <!-- Create User Account -->
 <div class = "section-header">
