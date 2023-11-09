@@ -404,11 +404,11 @@
         cell3.innerHTML = loc;
         //delete button that takes model name and type
         cell4.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        //edit button that takes row number, modelUrl, webUrl
+        //edit button that takes row number, accessoryUrl
         cell5.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editAccessory(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\')">Edit</span>';
     }
 
-    function editAccessory(rowId){
+    function editAccessory(rowId, mUrl){
         //get table and the row
         var table = document.getElementById("acc-database-table");
         var row = table.rows[rowId];
