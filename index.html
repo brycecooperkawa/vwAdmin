@@ -363,18 +363,22 @@
         var type = document.getElementById('type').value;
         var websiteUrlField = document.getElementById('websiteUrlField');
         var locationField = document.getElementById('locationField');
+        var imageField = document.getElementById('imageField');
 
-        //if car show the webUrl and hide the location
+        //if car show the webUrl, image, and hide the location
         if (type == 'car') {
             websiteUrlField.style.display = 'block';
+            imageField.style.display = 'block';
             locationField.style.display = 'none';
             document.getElementById('location').value = '0';
             document.getElementById('websiteUrl').value = "";
         //if accessory vice versa
         } else if (type == 'accessory') {
             websiteUrlField.style.display = 'none';
+            imageField.style.display = 'none';
             locationField.style.display = 'block';
             document.getElementById('websiteUrl').value = "MichaelJefferyJordan";
+            document.getElementById('modelImage').value = "EliManning";
         }
     }
 
@@ -476,6 +480,11 @@
             <option value="tmiddle">Top Middle</option>
             <option value="tright">Top Right</option>
         </select><br><br>
+    </div>
+
+    <div class = "input-boxes" id="modelImageField">
+        <label for="modelImage">Model Image: </label>
+        <input type="text" id="modelImage" name="modelImage"><br><br>
     </div>
 
 <button onclick="uploadModel()">Upload Model</button>
