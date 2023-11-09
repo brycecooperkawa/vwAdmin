@@ -40,6 +40,8 @@
         document.getElementById('confirmPassword').value = "";
     }
 
+    //------------------------------VEHICLE STUFF------------------------------
+        
     //upload model to database functionality
     function uploadModel(){
         //avoid normal form submission
@@ -124,81 +126,6 @@
             alert("Please enter a model image and try again.");
         }
         
-    }
-
-    //function that adds rows to the table
-    function addRow(name, mUrl, wUrl, type, loc, mImage) {
-        //get the table
-        var table = document.getElementById("database-table");
-        
-        //create a row and the cells to insert in that row
-        var row = table.insertRow(table.rows.length);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell8 = row.insertCell(3);
-        var cell4 = row.insertCell(4);
-        var cell5 = row.insertCell(5);
-        var cell6 = row.insertCell(6);
-        var cell7 = row.insertCell(7);
-
-        //fill out the cells
-        cell1.innerHTML = name;
-        cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
-        //if accessory then set the display to N/A
-        if (wUrl == "MichaelJefferyJordan" || wUrl == "KobeBeanBryant" || wUrl == "N/A"){
-            cell3.innerHTML = "N/A";
-        //if car set as link
-        }else{
-            cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
-        }
-        cell4.innerHTML = type;
-        cell5.innerHTML = loc;
-        //delete button that takes model name and type
-        cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
-        //edit button that takes row number, modelUrl, webUrl
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\', \'' + mImage + '\')">Edit</span>';
-        if (mImage == "" || mImage == "N/A"){
-            cell8.innerHTML = "N/A";
-        }else{
-            cell8.innerHTML = '<a href="' + mImage + '">View ' + name + ' Image' + '</a>';
-        }
-    }
-
-    //deletes the model from the database
-    function deleteModel(name, type){
-        //ask the user if they want to delete model
-        var confirmed = confirm("Are you sure you want to delete the " + name + " model?");
-        //prefrom deletion
-        if (confirmed) {
-            event.preventDefault();
-
-            //get the proper var for the url from the type var
-            var car = '1';
-            if (type == 'Accessory'){
-                car = '0';
-            }
-        
-            var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
-
-            fetch(url, {
-                method: 'POST'
-            }).then(response => {
-                console.log('Request sent successfully');
-            }).catch(error => {
-                console.error('Error sending request:', error);
-            });
-            alert(name + " has been deleted.");
-
-            //wait 5 seconds before updating table
-            setTimeout(function() {
-                updateTable();
-            }, 5000);
-            
-        } else {
-            //delete canceled
-            alert("Deletion of " + name + " was cancelled.");
-        }
     }
 
     //on edit cell click, make the row editable
@@ -331,6 +258,45 @@
         
     }
 
+    //function that adds rows to the table
+    function addRow(name, mUrl, wUrl, type, loc, mImage) {
+        //get the table
+        var table = document.getElementById("database-table");
+        
+        //create a row and the cells to insert in that row
+        var row = table.insertRow(table.rows.length);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell8 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+
+        //fill out the cells
+        cell1.innerHTML = name;
+        cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
+        //if accessory then set the display to N/A
+        if (wUrl == "MichaelJefferyJordan" || wUrl == "KobeBeanBryant" || wUrl == "N/A"){
+            cell3.innerHTML = "N/A";
+        //if car set as link
+        }else{
+            cell3.innerHTML = '<a href="' + wUrl + '">Link to ' + name + '</a>';
+        }
+        cell4.innerHTML = type;
+        cell5.innerHTML = loc;
+        //delete button that takes model name and type
+        cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
+        //edit button that takes row number, modelUrl, webUrl
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\', \'' + mImage + '\')">Edit</span>';
+        if (mImage == "" || mImage == "N/A"){
+            cell8.innerHTML = "N/A";
+        }else{
+            cell8.innerHTML = '<a href="' + mImage + '">View ' + name + ' Image' + '</a>';
+        }
+    }
+
     //function that clears all rows from table, then updates it
     //called after a model is uploaded so the table updates without having to refresh the page
     function updateTable() {
@@ -342,6 +308,164 @@
         }
         //refills table with updated info
         requestJSON(requestUrl);
+    }
+        
+    //------------------------------ACCESSORY STUFF------------------------------
+
+    //upload accessory to database functionality
+    function uploadAccessory(){
+        //avoid normal form submission
+        event.preventDefault();
+
+        //get info from the html form
+        var accName = document.getElementById('accessoryName').value;
+        var accUrl = document.getElementById('accessoryUrl').value;
+        var location = document.getElementById('location').value;
+
+        //check for all valid inputs
+        var check = 1;
+
+        //set the type as an accessory
+        var type = 0;
+
+        //fill out all invalid/car only inputs
+        var websiteUrl = null;
+        var imageUrl = null;
+
+        //convert the location values to loc so they can be used in the url
+        var loc = '0';
+        if (location == 'tleft'){
+            loc = '1';
+        }else if (location == 'tmiddle'){
+            loc = '2';
+        }else if (location == 'tright'){
+            loc = '3';
+        }
+
+        //check for modelName and modelUrl being entered, if not then alert user using check
+        if (accName == ""){
+            check = 2;
+        }else if (accUrl == ""){
+            check = 3;
+
+        //if check is one everything is entered, now upload the model
+        if (check == 1){
+            var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=" + type + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + imageUrl;
+            console.log(url);
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
+            alert("Accessory Model Uploaded");
+
+            //clear/reset form
+            document.getElementById('accessoryName').value = "";
+            document.getElementById('accessoryUrl').value = "";
+            var locationDropdown = document.getElementById('location');
+            locationDropdown = "tleft";
+
+            //Wait 5 seconds before updating table
+            setTimeout(function() {
+                updateAccessoryTable();
+            }, 5000);
+
+        //check fail alerts
+        }else if (check == 2){
+            alert("Please enter an accessory name and try again.");
+        }else if (check == 3){
+            alert("Please enter an accessory S3 url and try again.");
+        }
+        
+    }
+        
+    //function that adds rows to the accessory table
+    function addRowAccessory(name, mUrl, loc) {
+        //get the table
+        var table = document.getElementById("acc-database-table");
+
+        //set type
+        var type = 'Accessory';
+        
+        //create a row and the cells to insert in that row
+        var row = table.insertRow(table.rows.length);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+
+        //fill out the cells
+        cell1.innerHTML = name;
+        cell2.innerHTML = '<a href="' + mUrl + '">Download ' + name + '</a>';
+        cell3.innerHTML = loc;
+        //delete button that takes model name and type
+        cell4.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
+        //edit button that takes row number, modelUrl, webUrl
+        cell5.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editAccessory(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\')">Edit</span>';
+    }
+
+    function editAccessory(rowId){
+        console.log("Edit");
+    }
+
+    function editSaveAccessory(){
+
+    }
+
+    //function that clears all rows from table, then updates it
+    //called after a model is uploaded so the table updates without having to refresh the page
+    //specifically works for the accessory table
+    function updateAccessoryTable() {
+        //clears table
+        var table = document.getElementById("acc-database-table");
+        var rowCount = table.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            table.deleteRow(i);
+        }
+        //refills table with updated info
+        requestJSON(requestUrl);
+    }
+
+    //------------------------------GENERAL STUFF------------------------------
+    //work regardless of type
+
+    //deletes the model from the database regardless of type
+    function deleteModel(name, type){
+        //ask the user if they want to delete model
+        var confirmed = confirm("Are you sure you want to delete the " + name + " model?");
+        //prefrom deletion
+        if (confirmed) {
+            event.preventDefault();
+
+            //get the proper var for the url from the type var
+            var car = '1';
+            if (type == 'Accessory'){
+                car = '0';
+            }
+        
+            var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
+
+            fetch(url, {
+                method: 'POST'
+            }).then(response => {
+                console.log('Request sent successfully');
+            }).catch(error => {
+                console.error('Error sending request:', error);
+            });
+            alert(name + " has been deleted.");
+
+            //wait 5 seconds before updating table
+            setTimeout(function() {
+                updateTable();
+            }, 5000);
+            
+        } else {
+            //delete canceled
+            alert("Deletion of " + name + " was cancelled.");
+        }
     }
 
     //parse the data currently in the table, then add to the table
@@ -371,7 +495,7 @@
                 }else if (modelInfo[4] == '3'){
                     loc = 'Top Right';
                 }
-                addRow(modelInfo[0], modelInfo[1], "N/A", "Accessory", loc, "N/A");
+                addRowAccessory(modelInfo[0], modelInfo[1], loc);
             }
         }
     }
@@ -379,6 +503,8 @@
     requestJSON(requestUrl);
 
     //based on which type is selected in the form, display different options
+    //works but via client request to change the table from 1 into 2 and from 1 upload to separate, is no longer needed
+    /*
     function optionsToggle() {
         //get the type and the fields that will or won't be shown
         var type = document.getElementById('type').value;
@@ -403,7 +529,8 @@
             document.getElementById('modelImage').value = "EliManning";
         }
     }
-
+    */
+    
     //TO DO
     //Table stuff
         //allow alphabetical sorting/filtering on the table
@@ -468,23 +595,6 @@
 
 <br><br>
 
-<!-- View Accessory Database -->
-<div class = "section-header">
-    <p>Accessory Database</p>
-</div>
-    
-<table id='acc-database-table'>
-    <tr>
-        <th>Model Name</th>
-        <th>Model URL</th>
-        <th>Location</th>
-        <th>Delete Entry</th>
-        <th>Edit Entry</th>
-    </tr>
-</table>
-
-<br><br>
-
 <!-- Upload Vehicle -->
 <div class = "section-header">
     <p>Upload Vehicle</p>
@@ -537,6 +647,23 @@
 
 <br><br>
 
+<!-- View Accessory Database -->
+<div class = "section-header">
+    <p>Accessory Database</p>
+</div>
+    
+<table id='acc-database-table'>
+    <tr>
+        <th>Accessory Name</th>
+        <th>Accessory URL</th>
+        <th>Location</th>
+        <th>Delete Accessory</th>
+        <th>Edit Accessory</th>
+    </tr>
+</table>
+
+<br><br>
+
 <!-- Upload Accessory -->
 <div class = "section-header">
     <p>Upload Accessory</p>
@@ -546,13 +673,13 @@
 <form>
     
     <div class = "input-boxes">
-        <label for="modelName">Model Name: </label>
-        <input type="text" id="modelName" name="modelName"><br><br>
+        <label for="accessoryName">Accessory Name: </label>
+        <input type="text" id="accessoryName" name="accessoryName"><br><br>
     </div>
 
     <div class = "input-boxes">
-        <label for="modelUrl">Model URL: </label>
-        <input type="text" id="modelUrl" name="modelUrl"><br><br>
+        <label for="accessoryUrl">Accessory URL: </label>
+        <input type="text" id="accessoryUrl" name="accessoryUrl"><br><br>
     </div>
 
     <div class = "input-boxes" id="locationField">
@@ -564,7 +691,7 @@
         </select><br><br>
     </div>
 
-<button onclick="uploadModel()">Upload Model</button>
+<button onclick="uploadAccessory()">Upload Accessory</button>
 
 </form>
 
