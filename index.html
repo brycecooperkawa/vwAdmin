@@ -157,7 +157,7 @@
         //delete button that takes model name and type
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
         //edit button that takes row number, modelUrl, webUrl
-        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\')">Edit</span>';
+        cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\', \'' + mImage + '\')">Edit</span>';
         if (mImage == "" || mImage == "N/A"){
             cell8.innerHTML = "N/A";
         }else{
@@ -203,7 +203,7 @@
 
     //on edit cell click, make the row editable
     //edit becomes a save which then takes you to save
-    function editModel(rowId, mUrl, wUrl) {
+    function editModel(rowId, mUrl, wUrl, mImage) {
         //get table and the row
         var table = document.getElementById("database-table");
         var row = table.rows[rowId];
@@ -230,8 +230,10 @@
                 cell.innerHTML = '<input type="text" id="editModelUrl" name="editModelUrl" value="' + mUrl + '">';
             }else if (i == 2 && check == 1){
                 cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
-            }else if (i == 4 && check == 0){
+            }else if (i == 5 && check == 0){
                 cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
+            }else if (i == 3 && check == 1){
+                cell.innerHTML = '<input type="text" id="editImage" name="editImage" value="' + mImage + '">';
             }
             
         }
@@ -256,6 +258,7 @@
         //get the inputs that are model type specific
         var websiteUrl = "KobeBeanBryant";
         var editLocation = "OdellBeckhamJr";
+        var modelImage = "EliManning";
         if (document.getElementById('editLocation') != null){
             editLocation = document.getElementById('editLocation').value;
         }
@@ -263,6 +266,7 @@
         var car = '1';
         if (type == "Car"){
             websiteUrl = document.getElementById('editWebUrl').value;
+            modelImage = document.getElementById('editImage').value;
         }else{
             if (editLocation == 'tleft'){
                 loc = '1';
@@ -283,6 +287,8 @@
             check = 2;
         }else if (modelUrl == ""){
             check = 3;
+        }else if (modelImage == ""){
+            check = 4;
         }
 
         if (check == 1){
@@ -300,7 +306,7 @@
             });
 
             //upload model with edits
-            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc;
+            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + image;
             fetch(url, {
                 method: 'POST'
             }).then(response => {
@@ -319,6 +325,8 @@
             alert("Please enter a model name and try again.");
         }else if (check == 3){
             alert("Please enter a model S3 url and try again.");
+        }else if (check == 4){
+            alert("Please enter a model image and try again.");
         }
         
     }
@@ -412,6 +420,9 @@
         //added save functionality from the table
         //added cancel of edit functionality
     //fixed form clearing
+    //updated all functions to add image url column
+
+    
     </script>
     
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
