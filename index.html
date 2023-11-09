@@ -484,8 +484,13 @@
             alert(name + " has been deleted.");
 
             //wait 5 seconds before updating table
+            //update depending on which model type was deleted
             setTimeout(function() {
-                updateTable();
+                if (car == '1'){
+                    updateTable();
+                }else{
+                    updateAccessoryTable();
+                }
             }, 5000);
             
         } else {
