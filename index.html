@@ -328,10 +328,6 @@
         //set the type as an accessory
         var type = 0;
 
-        //fill out all invalid/car only inputs
-        var websiteUrl = null;
-        var imageUrl = null;
-
         //convert the location values to loc so they can be used in the url
         var loc = '0';
         if (location == 'tleft'){
@@ -351,7 +347,7 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
-            var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=" + type + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + imageUrl;
+            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=0&VWURL=" + null + "&Location=" + loc + "&Image=" + null + "&Color=" + null + "&Positions=" + null;
             console.log(url);
             fetch(url, {
                 method: 'POST'
