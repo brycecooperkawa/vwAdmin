@@ -57,7 +57,11 @@
         console.log(colors);
         console.log(positions);
 
+        //removes whitespaces from the colors
+        colors = colors.replace(/\s/g, '');
+
         //make all entered positions into an array
+        positions = positions.replace(/\s/g, '');
         var positionArray = positions.split(",").map(pos => `(${pos.trim()})`);
         var formattedPositions = positionArray.join(", ");
         console.log(formattedPositions);
