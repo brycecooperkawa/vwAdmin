@@ -158,7 +158,11 @@
         cell6.innerHTML = '<span style="color: red; text-decoration: underline; cursor: pointer;" onclick="deleteModel(\'' + name + '\', \'' + type + '\')">Delete</span>';
         //edit button that takes row number, modelUrl, webUrl
         cell7.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editModel(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\', \'' + wUrl + '\')">Edit</span>';
-        cell8.innerHTML = '<a href="' + mImage + '">Download ' + name + ' Image' + '</a>';
+        if (mImage == "" || mImage == "N/A"){
+            cell8.innerHTML = "N/A";
+        }else{
+            cell8.innerHTML = '<a href="' + mImage + '">View ' + name + ' Image' + '</a>';
+        }
     }
 
     //deletes the model from the database
