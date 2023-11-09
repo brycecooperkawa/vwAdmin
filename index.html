@@ -409,11 +409,40 @@
     }
 
     function editAccessory(rowId){
-        console.log("Edit");
+        //get table and the row
+        var table = document.getElementById("acc-database-table");
+        var row = table.rows[rowId];
+
+        //get original name to pass to save for delete functionality
+        var origName = row.cells[0].innerHTML;
+
+        //based on the type, select which cells are editable or not
+        var type = "Accessory";
+
+        //loop thru all cells and make them editable
+        for (var i = 0; i < row.cells.length - 2; i++) {
+            var cell = row.cells[i];
+            var cellData = cell.innerHTML;
+
+            //sets the cells as text entries if they should be
+            if (i == 0){
+                cell.innerHTML = '<input type="text" id="editAccessoryName" name="editAccessoryName" value="' + cellData + '">';
+            }else if (i == 1){
+                cell.innerHTML = '<input type="text" id="editAccessoryUrl" name="editAccessoryUrl" value="' + mUrl + '">';
+            }else if (i == 2){
+                cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
+            }
+        }
+
+        //change edit option to save/cancel
+        var editCell = row.cells[row.cells.length - 1];
+        editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="editSaveAccessory(\'' + rowId +  '\', \'' + origName +  '\')">Save</span>' +
+            '<span style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;" onclick="updateAccessoryTable()">Cancel</span>';
     }
 
-    function editSaveAccessory(){
 
+    function editSaveAccessory(rowId, origName){
+        console.log(origName);
     }
 
     //function that clears all rows from table, then updates it
