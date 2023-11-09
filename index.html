@@ -54,6 +54,13 @@
         var image = document.getElementById('modelImage').value;
         var colors = document.getElementById('colors').value;
         var positions = document.getElementById('positions').value;
+        console.log(colors);
+        console.log(positions);
+
+        //make all entered positions into an array
+        var positionArray = positions.split(",").map(pos => `(${pos.trim()})`);
+        var formattedPositions = positionArray.join(", ");
+        console.log(formattedPositions);
         
         //variable check to check all inputs as vaild
         var check = 1;
@@ -637,9 +644,6 @@
         //updated all functions for vehicle additions
         //updated html to split tables
     //added new rows to vehicle tables
-
-    //upload should be working outside of positions
-        //make sure colors and positions are being uploaded correctly
 
     </script>
     
