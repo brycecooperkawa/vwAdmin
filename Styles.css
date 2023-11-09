@@ -96,7 +96,7 @@ button {
     text-align: center;
 }
 
-#websiteUrlField, #locationField {
+#websiteUrlField, #locationField, #modelImageField {
     display: none;
 }
 
