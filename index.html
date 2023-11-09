@@ -306,7 +306,7 @@
             });
 
             //upload model with edits
-            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + image;
+            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + modelImage;
             fetch(url, {
                 method: 'POST'
             }).then(response => {
