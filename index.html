@@ -84,10 +84,12 @@
         }else if (modelImage == ""){
             check = 4;
         }
+        console.log(check);
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
             var url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + modelImage;
+            console.log(url);
             fetch(url, {
                 method: 'POST'
             }).then(response => {
