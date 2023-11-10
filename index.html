@@ -345,7 +345,7 @@
         var pos = document.getElementById("positions").value;
 
         //gets rid of spaces in positions entry
-        positions.replace(/\s/g, '');
+        pos = positions.replace(/\s/g, '');
 
         //set the pattern that the users input must match
         var positionsPattern = /^\d+,\d+,\d+$/;
@@ -396,6 +396,9 @@
 
     //check that the edited position field matches the correct format
     function checkEditPositions(positions){
+        //get rid of spaces in positions string
+        positions = positions.replace(/\s/g, '');
+        
         //set the pattern that the users input must match
         var positionPattern = /^\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\)(,\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\))*$/;
 
