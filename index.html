@@ -76,7 +76,7 @@
         
         //variable check to check all inputs as vaild
         var check = 1;
-        //check for modelName and modelUrl being entered, if not then alert user using check
+        //check for all values to be entered correctly
         if (modelName == ""){
             check = 2;
         }else if (modelUrl == ""){
@@ -144,18 +144,11 @@
     //edit becomes a save which then takes you to save
     function editModel(rowId, mUrl, wUrl, mImage) {
         //get table and the row
-        var table = document.getElementById("database-table");
+        var table = document.getElementById("vec-database-table");
         var row = table.rows[rowId];
 
         //get original name to pass to save for delete functionality
         var origName = row.cells[0].innerHTML;
-
-        //based on the type, select which cells are editable or not
-        var typeCell = row.cells[row.cells.length - 4];
-        var check = 1;
-        if (typeCell.innerHTML == "Accessory"){
-            check = 0;
-        }
 
         //loop thru all cells and make them editable
         for (var i = 0; i < row.cells.length - 2; i++) {
@@ -167,12 +160,15 @@
                 cell.innerHTML = '<input type="text" id="editModelName" name="editModelName" value="' + cellData + '">';
             }else if (i == 1){
                 cell.innerHTML = '<input type="text" id="editModelUrl" name="editModelUrl" value="' + mUrl + '">';
-            }else if (i == 2 && check == 1){
+            }else if (i == 2){
                 cell.innerHTML = '<input type="text" id="editWebUrl" name="editWebUrl" value="' + wUrl + '">';
-            }else if (i == 5 && check == 0){
-                cell.innerHTML = '<select id="editLocation" name="editLocation"> <option value="tleft">Top Left</option> <option value="tmiddle">Top Middle</option> <option value="tright">Top Right</option> </select>';
-            }else if (i == 3 && check == 1){
+            }else if (i == 3){
                 cell.innerHTML = '<input type="text" id="editImage" name="editImage" value="' + mImage + '">';
+            }else if (i == 4){
+                cell.innerHTML = '<input type="text" id="editModelColors" name="editModelColors" value="' + cellData + '">'
+            }
+            else if (i == 5){
+                cell.innerHTML = '<input type="text" id="editModelPositions" name="editModelPositions" value="' + cellData + '">'
             }
             
         }
@@ -187,47 +183,40 @@
     //used to update the model in the database
     function saveEditModel(rowId, origName){
         //get table and row
-        var table = document.getElementById("database-table");
+        var table = document.getElementById("vec-database-table");
         var row = table.rows[rowId];
 
-        var typeCell = row.cells[row.cells.length - 4];
-        //get the type of the cell being saved
-        var type = typeCell.innerHTML;
-
         //get the inputs that are model type specific
-        var websiteUrl = "KobeBeanBryant";
-        var editLocation = "OdellBeckhamJr";
-        var modelImage = "EliManning";
-        if (document.getElementById('editLocation') != null){
-            editLocation = document.getElementById('editLocation').value;
-        }
-        var loc = '0';
-        var car = '1';
-        if (type == "Car"){
-            websiteUrl = document.getElementById('editWebUrl').value;
-            modelImage = document.getElementById('editImage').value;
-        }else{
-            if (editLocation == 'tleft'){
-                loc = '1';
-            }else if (editLocation == 'tmiddle'){
-                loc = '2';
-            }else if (editLocation == 'tright'){
-                loc = '3';
-            }
-            car = '0';
-        }
-
         var modelName = document.getElementById('editModelName').value;
         var modelUrl = document.getElementById('editModelUrl').value;
+        var websiteUrl = document.getElementById('editWebUrl').value;
+        var image = document.getElementById('editImage').value;;
+        var loc = '0';
+        var car = '1';
+        var colors = checkColors(document.getElementById('editModelColors').value);
+        var positions = document.getElementById('editModelPositions').value;
 
-        //check to make sure that modelName and modelUrl are not left blank
+        var finalPosCheck = checkEditPositions(positions);
+
+        //variable check to check all inputs as vaild
         var check = 1;
+        //check for all values to be entered correctly
         if (modelName == ""){
             check = 2;
         }else if (modelUrl == ""){
             check = 3;
-        }else if (modelImage == ""){
+        }else if (image == ""){
             check = 4;
+        }else if (colors == ""){
+            check = 5;
+        }else if (positionsArray == ""){
+            check = 6;
+        }else if (colorsValue == "SaquonBarkley"){
+            check = 7;
+        }else if (finalPosCheck == 1){
+            check = 8;
+        }else if (websiteUrl == ""){
+            check = 9;
         }
 
         if (check == 1){
@@ -235,7 +224,6 @@
             event.preventDefault();
         
             var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + origName + "&Car=" + car;
-
             fetch(url, {
                 method: 'POST'
             }).then(response => {
@@ -245,7 +233,8 @@
             });
 
             //upload model with edits
-            url = "https://czenhyigbsqohlv74ihu2jzj6a0wfbrw.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=" + car + "&VWURL=" + websiteUrl + "&Location=" + loc + "&Image=" + modelImage;
+            url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + finalPosCheck;
+            console.log(url)
             fetch(url, {
                 method: 'POST'
             }).then(response => {
@@ -253,19 +242,28 @@
             }).catch(error => {
                 console.error('Error sending request:', error);
             });
-            alert("Model Updated");
+            alert("Vehicle Model Updated");
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
                 updateTable();
             }, 5000);
-            
         }else if (check == 2){
-            alert("Please enter a model name and try again.");
+            alert("Please enter a vehicle name and try again.");
         }else if (check == 3){
-            alert("Please enter a model S3 url and try again.");
+            alert("Please enter a vehicle S3 url and try again.");
         }else if (check == 4){
-            alert("Please enter a model image and try again.");
+            alert("Please enter a vehicle image url and try again.");
+        }else if (check == 5){
+            alert("Please enter a vehicle image url and try again.");
+        }else if (check == 6){
+            alert("Please enter at least one vehicle color and try again.");
+        }else if (check == 6){
+            alert("Please enter at least one vehicle seat position and try again.");
+        }else if (check == 7){
+            alert("Colors are formatted incorrectly, please try again with valid hexadecimal codes. ex: f56830, 0d9bfa");
+        }else if (check == 8){
+            alert("Seat positions are formatted incorrectly, please try again. ex: (13,26,10),(99,2,51)");
         }
         
     }
@@ -314,6 +312,7 @@
     }
 
     //on user button click, adds another input fields for the user to enter another seat
+    //also check that that input was a valid position
     function addSeatInput(uploadCheck) {
         //prevent page from reloading
         event.preventDefault();
@@ -343,6 +342,7 @@
         } 
     }
 
+    //checks that the inputted colors are valid
     function checkColors(colors){
         //removes whitespaces from the colors
         colors = colors.replace(/\s/g, '');
@@ -353,13 +353,25 @@
         //checking if the user input matches the colors pattern
         //if it does then return the colors variable to uploadVehicle
         //if it doesnt then set colors to essentially a new check variable to tell user to try again with colors
-        if (colorsPattern.test(colors)) {
+        if (colorsPattern.test(colors)){
             return colors;
-        } else {
+        }else{
             return "SaquonBarkley";
         }
 
-        
+    }
+
+    //check that the edited position field matches the correct format
+    function checkEditPositions(positions){
+        //set the pattern that the users input must match
+        var positionPattern = /^\(\d+,\d+,\d+\)(,\(\d+,\d+,\d+\))*$/;
+
+        //check that the positions match the format
+        if (positionPattern.test(positions)){
+            return positions
+        }else{
+            return 1;
+        }
     }
         
     //------------------------------ACCESSORY STUFF------------------------------
