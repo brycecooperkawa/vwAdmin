@@ -381,7 +381,7 @@
     //check that the edited position field matches the correct format
     function checkEditPositions(positions){
         //set the pattern that the users input must match
-        var positionPattern = /^\(\d+,\d+,\d+\)(,\(\d+,\d+,\d+\))*$/;
+        var positionPattern = /^\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\)(,\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\))*$/;
 
         //check that the positions match the format
         if (positionPattern.test(positions)){
