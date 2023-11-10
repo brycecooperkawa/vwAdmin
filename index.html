@@ -59,7 +59,8 @@
         colors = colors.replace(/\s/g, '');
 
         //make all entered positions into an array
-        var positionsEntered = document.getElementsByClassName('positions');
+        var positionsEntered = document.getElementsByClassName('positionsEntered');
+        console.log(positionsEntered);
         var positions = [];
         for (var i = 0; i < positionsEntered.length; i++) {
             positions.push(positionInputs[i].value);
