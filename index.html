@@ -62,19 +62,12 @@
         var websiteUrl = document.getElementById('websiteUrl').value;
         var image = document.getElementById('modelImage').value;
         var colors = document.getElementById('colors').value;
-        console.log(colors);
 
-        //removes whitespaces from the colors
-        colors = colors.replace(/\s/g, '');
+        //make sure colors entered are valid format
+        //colorsValue will = colors if so
+        //otherwise will serve as another check value
+        var colorsValue = checkColors(colors);
 
-        //make all entered positions into an array
-        var positionsEntered = document.getElementsByClassName('positionsEntered');
-        console.log(positionsEntered);
-        var positions = [];
-        for (var i = 0; i < positionsEntered.length; i++) {
-            positions.push(positionInputs[i].value);
-        }
-        console.log(positions);
         
         //variable check to check all inputs as vaild
         var check = 1;
@@ -87,8 +80,10 @@
             check = 4;
         }else if (colors == ""){
             check = 5;
-        }else if (positions == []){
+        }else if (positionsArray == []){
             check = 6;
+        }else if (colorsValue == "SaquonBarkley"){
+            check = 7;
         }
 
         //if check is one everything is entered, now upload the model
@@ -129,6 +124,8 @@
             alert("Please enter at least one vehicle color and try again.");
         }else if (check == 6){
             alert("Please enter at least one vehicle seat position and try again.");
+        }else if (check == 7){
+            alert("Color is formatted incorrectly, please try again.");
         }
         
     }
@@ -325,21 +322,12 @@
 
         //set the pattern that the users input must match
         var pattern = /^\d+,\d+,\d+$/;
-
-        //makes sure the user enters the correct format
-        var check = 1;
         
         //check that it matches that pattern
         //if it does then push the position to the array
         //if it doesn't then alert the user
         if (pattern.test(pos)) {
             positionsArray.push(pos);
-        } else {
-            alert("The input is not in the correct format. Please use the format 3,3,3.");
-            check = 0;
-        }
-
-        if (check = 1){
             //let the user know the seat was saved
             alert("Vehicle seat was saved.");
 
@@ -350,7 +338,28 @@
             document.getElementById('positions').value = "";
 
             console.log(positionsArray);
+            
+        } else {
+            alert("The input is not in the correct format. Please use the format 3,3,3.");
+        } 
+    }
+
+    function checkColors(colors){
+        //removes whitespaces from the colors
+        colors = colors.replace(/\s/g, '');
+
+        //sets the colors pattern to check against
+        var colorsPattern = /^([0-9a-fA-F]{6},)*([0-9a-fA-F]{6})$/;
+
+        //checking if the user input matches the colors pattern
+        //if it does then return the colors variable to uploadVehicle
+        //if it doesnt then set colors to essentially a new check variable to tell user to try again with colors
+        if (colorsPattern.test(colors)) {
+            return colors;
+        } else {
+            return
         }
+
         
     }
         
