@@ -655,29 +655,26 @@
             var modelInfo = data[i];
 
             //based on if listed as car or accessory send addRow diff things
-            if (modelInfo[2] == '1'){
+            if (modelInfo[2] == '1' && vehiclesUpdated == 1){
                 //car
-                if (vehiclesUpdated == 1){
-                    addRow(modelInfo[0], modelInfo[1], modelInfo[3], modelInfo[5], modelInfo[6], modelInfo[7]);
-                    vehiclesUpdated = 0;
-                }
-            }else{
+                addRow(modelInfo[0], modelInfo[1], modelInfo[3], modelInfo[5], modelInfo[6], modelInfo[7]);
+            }else if (accessoriesUpdated == 1){
                 //accessory
-                if (accessoriesUpdated == 1){
-                    var loc;
-                    if (modelInfo[4] == '1'){
-                        loc = 'Top Left';
-                    }else if (modelInfo[4] == '2'){
-                        loc = 'Top Middle';
-                    }else if (modelInfo[4] == '3'){
-                        loc = 'Top Right';
-                    }
-                    addRowAccessory(modelInfo[0], modelInfo[1], loc);
-                    accessoriesUpdated = 0;
+                var loc;
+                if (modelInfo[4] == '1'){
+                    loc = 'Top Left';
+                }else if (modelInfo[4] == '2'){
+                    loc = 'Top Middle';
+                }else if (modelInfo[4] == '3'){
+                    loc = 'Top Right';
                 }
+                addRowAccessory(modelInfo[0], modelInfo[1], loc);
             }
         }
+        vehiclesUpdated = 0;
+        accessoriesUpdated = 0;
     }
+
 
     requestJSON(requestUrl);
 
