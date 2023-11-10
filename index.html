@@ -348,7 +348,7 @@
         pos = pos.replace(/\s/g, '');
 
         //set the pattern that the users input must match
-        var positionsPattern = /^\d+,\d+,\d+$/;
+        var positionsPattern = /^(-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)$/;
         
         //check that it matches that pattern
         //if it does then push the position to the array
