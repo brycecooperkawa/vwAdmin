@@ -61,7 +61,7 @@
         //make all entered positions into an array
         var positionsEntered = document.getElementsByClassName('positions');
         var positions = [];
-        for (var i = 0; i < positionEntered.length; i++) {
+        for (var i = 0; i < positionsEntered.length; i++) {
             positions.push(positionInputs[i].value);
         }
         console.log(positions);
@@ -77,7 +77,7 @@
             check = 4;
         }else if (colors == ""){
             check = 5;
-        }else if (positions == ""){
+        }else if (positions == []){
             check = 6;
         }
 
