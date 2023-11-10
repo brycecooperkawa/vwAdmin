@@ -546,8 +546,24 @@
         //change edit option to save/cancel
         var editCell = row.cells[row.cells.length - 1];
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="editSaveAccessory(\'' + rowId +  '\', \'' + origName +  '\')">Save</span>' +
-            '<span style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;" onclick="updateAccessoryTable()">Cancel</span>';
+            '<span id="cancelAccButton" style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;">Cancel</span>';
+    
+        //event listener for button click to allow multiple functions for one button
+        cancelAccButton.addEventListener("click", function() {
+            //on button click set vehicle to update and then update table
+            accessoryUpdate();
+            updateAccessoryTable();
+        });
+
     }
+
+    
+    //make it so the vehicle table updates on next update table call
+    function accessoryUpdate(){
+        accessoriesUpdated = 1;
+    }
+
+    
 
     //saves an edited accessory entry
     function editSaveAccessory(rowId, origName){
