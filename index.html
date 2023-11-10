@@ -74,7 +74,6 @@
 
         //check for an entered seat on upload click that doesnt exist in positionsArray
         var positions = document.getElementById('positions').value;
-        positions = positions.replace(/\s/g, '');
         var finalPosCheck = 0;
         if (positions != ""){
             finalPosCheck = addSeatInput(1);
@@ -344,6 +343,9 @@
 
         //get the position from the html
         var pos = document.getElementById("positions").value;
+
+        //gets rid of spaces in positions entry
+        positions.replace(/\s/g, '');
 
         //set the pattern that the users input must match
         var positionsPattern = /^\d+,\d+,\d+$/;
