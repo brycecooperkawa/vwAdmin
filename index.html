@@ -67,6 +67,7 @@
         //colorsValue will = colors if so
         //otherwise will serve as another check value
         var colorsValue = checkColors(colors);
+        console.log(colorsValue);
 
         
         //variable check to check all inputs as vaild
@@ -88,7 +89,8 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
-            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + formatPositions;
+            /*
+            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=";
             console.log(url);
             fetch(url, {
                 method: 'POST'
@@ -97,6 +99,7 @@
             }).catch(error => {
                 console.error('Error sending request:', error);
             });
+            */
             alert("Vehicle Uploaded");
 
             //clear/reset form
