@@ -74,6 +74,7 @@
 
         //check for an entered seat on upload click that doesnt exist in positionsArray
         var positions = document.getElementById('positions').value;
+        let positions = positions.replace(/\s/g, '');
         var finalPosCheck = 0;
         if (positions != ""){
             finalPosCheck = addSeatInput(1);
