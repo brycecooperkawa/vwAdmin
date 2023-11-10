@@ -8,6 +8,15 @@
     
     <script>
 
+    //------------------------------VARIABLES------------------------------
+    //an array that stores the positions of the vehicle to be uploaded
+    var positionsArray = [];
+
+    //a counter to make sure that every seat the user enters is added
+    //ex: if the user doesn't push add seat before they upload the model whatever is in the positions input should be added to positions array
+    var positionsCount = 0;
+
+    //------------------------------CREATE ACCOUNT------------------------------
     //create account functionality
     function createAccountDatabase() {
         //avoid changing the url with normal form submission
@@ -308,14 +317,23 @@
 
     //on user button click, adds another input fields for the user to enter another seat
     function addSeatInput() {
+        //prevent page from reloading
         event.preventDefault();
-        
-        var div = document.createElement('div');
-        div.className = 'input-boxes';
-        div.innerHTML = `<label for="positionsEntered">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
-        <input type="text" id="positionsEntered" name="positionsEntered"><br>`;
 
-        document.getElementById('additionalSeatFields').appendChild(div);
+        //get the position and add it to the array of positions
+        var pos = document.getElementById("positions").value;
+        positionsArray.push(pos);
+
+        //let the user know the seat was saved
+        alert("Vehicle seat was saved.");
+
+        //increment the count of seats
+        positionsCount = positionsCount + 1;
+
+        //clear current position so user can add another
+        document.getElementById('positions').value = "";
+
+        console.log(positionsArray);
     }
         
     //------------------------------ACCESSORY STUFF------------------------------
@@ -728,12 +746,10 @@
         <input type="text" id="colors" name="colors"><br><br>
     </div>
 
-    <div class="input-boxes" id="positionField">
-        <label for="positionsEntered">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
-        <input type="text" id="positionsEntered" name="positionsEntered"><br>
+    <div class="input-boxes" id="positionsField">
+        <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
+        <input type="text" id="positions" name="positions"><br>
     </div>
-
-    <div id="additionalSeatFields"></div>
 
 <button onclick="addSeatInput()">Add Another Seat</button>
 
