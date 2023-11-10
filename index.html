@@ -209,7 +209,7 @@
             check = 4;
         }else if (colors == ""){
             check = 5;
-        }else if (positionsArray == ""){
+        }else if (finalPosCheck == ""){
             check = 6;
         }else if (colorsValue == "SaquonBarkley"){
             check = 7;
@@ -255,8 +255,6 @@
         }else if (check == 4){
             alert("Please enter a vehicle image url and try again.");
         }else if (check == 5){
-            alert("Please enter a vehicle image url and try again.");
-        }else if (check == 6){
             alert("Please enter at least one vehicle color and try again.");
         }else if (check == 6){
             alert("Please enter at least one vehicle seat position and try again.");
@@ -264,6 +262,8 @@
             alert("Colors are formatted incorrectly, please try again with valid hexadecimal codes. ex: f56830, 0d9bfa");
         }else if (check == 8){
             alert("Seat positions are formatted incorrectly, please try again. ex: (13,26,10),(99,2,51)");
+        }else if (check == 9){
+            alert("Please enter a vehicle website url and try again.");
         }
         
     }
