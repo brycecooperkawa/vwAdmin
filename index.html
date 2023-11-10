@@ -9,9 +9,8 @@
     <script>
 
     //------------------------------VARIABLES------------------------------
-    //a counter to make sure that every seat the user enters is added
-    //ex: if the user doesn't push add seat before they upload the model whatever is in the positions input should be added to positions array
-    var positionsCount = 0;
+    //an array that holds all positions for a given vehicle
+    var positionsArray = [];
 
     //------------------------------CREATE ACCOUNT------------------------------
     //create account functionality
@@ -113,6 +112,7 @@
             document.getElementById('websiteUrl').value = "";
             document.getElementById('modelImage').value = "";
             document.getElementById('colors').value = "";
+            positionsArray = [];
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
