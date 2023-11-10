@@ -12,7 +12,12 @@
     //an array that holds all positions for a given vehicle
     var positionsArray = [];
 
+    //will be 1 when the accessories need to be updated
+    //this is to stop tables from double filling when the other table was updated
     var accessoriesUpdated = 1;
+
+    //will be 1 when the vehicles need to be updated
+    //this is to stop tables from double filling when the other table was updated
     var vehiclesUpdated = 1;
 
     //------------------------------CREATE ACCOUNT------------------------------
@@ -100,6 +105,7 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
+            //vehicles need to be updated
             vehiclesUpdated = 1;
             
             var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colorsValue + "&Positions=" + positionsString;
@@ -227,7 +233,8 @@
         }
 
         if (check == 1){
-            vehiclesUpdated = 0;
+            //vehicles need to be updated
+            vehiclesUpdated = 1;
             
             //prefrom deletion of model before edit
             event.preventDefault();
@@ -421,6 +428,7 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
+            //accessories need to be updated
             accessoriesUpdated = 1;
             
             var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=0&VWURL=" + null + "&Location=" + loc + "&Image=" + null + "&Color=" + null + "&Positions=" + null;
@@ -541,6 +549,7 @@
         }
         
         if (check == 1){
+            //accessories need to be updated
             accessoriesUpdated = 1;
             
             //prefrom deletion of model before edit
@@ -655,9 +664,11 @@
             var modelInfo = data[i];
 
             //based on if listed as car or accessory send addRow diff things
+            //check that vehicles need to be updated
             if (modelInfo[2] == '1' && vehiclesUpdated == 1){
                 //car
                 addRow(modelInfo[0], modelInfo[1], modelInfo[3], modelInfo[5], modelInfo[6], modelInfo[7]);
+            //check that accessories need to be updated
             }else if (accessoriesUpdated == 1 && modelInfo[2] == '0'){
                 //accessory
                 var loc;
@@ -671,10 +682,10 @@
                 addRowAccessory(modelInfo[0], modelInfo[1], loc);
             }
         }
+        //reset the update variables
         vehiclesUpdated = 0;
         accessoriesUpdated = 0;
     }
-
 
     requestJSON(requestUrl);
 
