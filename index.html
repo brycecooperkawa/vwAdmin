@@ -53,18 +53,18 @@
         var websiteUrl = document.getElementById('websiteUrl').value;
         var image = document.getElementById('modelImage').value;
         var colors = document.getElementById('colors').value;
-        var positions = document.getElementById('positions').value;
         console.log(colors);
-        console.log(positions);
 
         //removes whitespaces from the colors
         colors = colors.replace(/\s/g, '');
 
         //make all entered positions into an array
-        positions = positions.replace(/\s/g, '');
-        var positionArray = positions.split(",").map(pos => `(${pos.trim()})`);
-        var formattedPositions = positionArray.join(", ");
-        console.log(formattedPositions);
+        var positionsEntered = document.getElementsByClassName('positions');
+        var positions = [];
+        for (var i = 0; i < positionEntered.length; i++) {
+            positions.push(positionInputs[i].value);
+        }
+        console.log(positions);
         
         //variable check to check all inputs as vaild
         var check = 1;
@@ -83,7 +83,7 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
-            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + positions;
+            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + formatPositions;
             console.log(url);
             fetch(url, {
                 method: 'POST'
@@ -311,8 +311,8 @@
         
         var div = document.createElement('div');
         div.className = 'input-boxes';
-        div.innerHTML = `<label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
-        <input type="text" id="positions" name="positions"><br>`;
+        div.innerHTML = `<label for="positionsEntered">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
+        <input type="text" id="positionsEntered" name="positionsEntered"><br>`;
 
         document.getElementById('additionalSeatFields').appendChild(div);
     }
@@ -728,8 +728,8 @@
     </div>
 
     <div class="input-boxes" id="positionField">
-        <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
-        <input type="text" id="positions" name="positions"><br>
+        <label for="positionsEntered">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
+        <input type="text" id="positionsEntered" name="positionsEntered"><br>
     </div>
 
     <div id="additionalSeatFields"></div>
