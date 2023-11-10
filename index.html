@@ -320,20 +320,38 @@
         //prevent page from reloading
         event.preventDefault();
 
-        //get the position and add it to the array of positions
+        //get the position from the html
         var pos = document.getElementById("positions").value;
-        positionsArray.push(pos);
 
-        //let the user know the seat was saved
-        alert("Vehicle seat was saved.");
+        //set the pattern that the users input must match
+        var pattern = /^\d+,\d+,\d+$/;
 
-        //increment the count of seats
-        positionsCount = positionsCount + 1;
+        //makes sure the user enters the correct format
+        var check = 1;
+        
+        //check that it matches that pattern
+        //if it does then push the position to the array
+        //if it doesn't then alert the user
+        if (pattern.test(userInput)) {
+            positionsArray.push(pos);
+        } else {
+            alert("The input is not in the correct format. Please use the format 3,3,3.");
+            check = 0;
+        }
 
-        //clear current position so user can add another
-        document.getElementById('positions').value = "";
+        if (check = 1){
+            //let the user know the seat was saved
+            alert("Vehicle seat was saved.");
 
-        console.log(positionsArray);
+            //increment the count of seats
+            positionsCount = positionsCount + 1;
+
+            //clear current position so user can add another
+            document.getElementById('positions').value = "";
+
+            console.log(positionsArray);
+        }
+        
     }
         
     //------------------------------ACCESSORY STUFF------------------------------
