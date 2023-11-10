@@ -12,6 +12,9 @@
     //an array that holds all positions for a given vehicle
     var positionsArray = [];
 
+    var accessoriesUpdated = 0;
+    var vehiclesUpdated = 0;
+
     //------------------------------CREATE ACCOUNT------------------------------
     //create account functionality
     function createAccountDatabase() {
@@ -97,6 +100,8 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
+            vehiclesUpdated = 1;
+            
             var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colorsValue + "&Positions=" + positionsString;
             console.log(url);
             fetch(url, {
@@ -222,6 +227,8 @@
         }
 
         if (check == 1){
+            vehiclesUpdated = 0;
+            
             //prefrom deletion of model before edit
             event.preventDefault();
         
@@ -250,6 +257,7 @@
             setTimeout(function() {
                 updateTable();
             }, 5000);
+            
         }else if (check == 2){
             alert("Please enter a vehicle name and try again.");
         }else if (check == 3){
@@ -413,6 +421,8 @@
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
+            accessoriesUpdated = 1;
+            
             var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + accName + "&Modelkey=" + accUrl + "&Car=0&VWURL=" + null + "&Location=" + loc + "&Image=" + null + "&Color=" + null + "&Positions=" + null;
             fetch(url, {
                 method: 'POST'
@@ -468,6 +478,7 @@
         cell5.innerHTML = '<span style="color: blue; text-decoration: underline; cursor: pointer;" onclick="editAccessory(\'' + (table.rows.length - 1) +  '\', \'' + mUrl + '\')">Edit</span>';
     }
 
+    //allows the admin to edit an entry in the accessory table
     function editAccessory(rowId, mUrl){
         //get table and the row
         var table = document.getElementById("acc-database-table");
@@ -500,7 +511,7 @@
             '<span style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;" onclick="updateAccessoryTable()">Cancel</span>';
     }
 
-
+    //saves an edited accessory entry
     function editSaveAccessory(rowId, origName){
         //get table and row
         var table = document.getElementById("acc-database-table");
@@ -530,6 +541,8 @@
         }
         
         if (check == 1){
+            accessoriesUpdated = 1;
+            
             //prefrom deletion of model before edit
             event.preventDefault();
         
@@ -576,6 +589,7 @@
         for (var i = rowCount - 1; i > 0; i--) {
             table.deleteRow(i);
         }
+        
         //refills table with updated info
         requestJSON(requestUrl);
     }
@@ -595,6 +609,9 @@
             var car = '1';
             if (type == 'Accessory'){
                 car = '0';
+                accessoriesUpdated = 1;
+            }else{
+                vehiclesUpdated = 1;
             }
         
             var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
@@ -640,18 +657,24 @@
             //based on if listed as car or accessory send addRow diff things
             if (modelInfo[2] == '1'){
                 //car
-                addRow(modelInfo[0], modelInfo[1], modelInfo[3], modelInfo[5], modelInfo[6], modelInfo[7]);
+                if (vehiclesUpdated == 1){
+                    addRow(modelInfo[0], modelInfo[1], modelInfo[3], modelInfo[5], modelInfo[6], modelInfo[7]);
+                    vehiclesUpdated = 0;
+                }
             }else{
                 //accessory
-                var loc;
-                if (modelInfo[4] == '1'){
-                    loc = 'Top Left';
-                }else if (modelInfo[4] == '2'){
-                    loc = 'Top Middle';
-                }else if (modelInfo[4] == '3'){
-                    loc = 'Top Right';
+                if (accessoriesUpdated == 1){
+                    var loc;
+                    if (modelInfo[4] == '1'){
+                        loc = 'Top Left';
+                    }else if (modelInfo[4] == '2'){
+                        loc = 'Top Middle';
+                    }else if (modelInfo[4] == '3'){
+                        loc = 'Top Right';
+                    }
+                    addRowAccessory(modelInfo[0], modelInfo[1], loc);
+                    accessoriesUpdated = 0;
                 }
-                addRowAccessory(modelInfo[0], modelInfo[1], loc);
             }
         }
     }
