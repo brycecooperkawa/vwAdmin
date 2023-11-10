@@ -76,11 +76,13 @@
         var positions = document.getElementById('positions').value;
         var finalPosCheck = 0;
         if (positions != ""){
-            var finalPosCheck = addSeatInput(1);
+            finalPosCheck = addSeatInput(1);
         }
 
         //convert the positions array into a string
         var positionsString = "(" + positionsArray.join("),(") + ")";
+
+        positionsString = checkEditPositions(positionsString);
         
         //variable check to check all inputs as vaild
         var check = 1;
@@ -93,7 +95,7 @@
             check = 4;
         }else if (colors == ""){
             check = 5;
-        }else if (positionsArray == []){
+        }else if (positionsString == []){
             check = 6;
         }else if (colorsValue == "SaquonBarkley"){
             check = 7;
@@ -101,6 +103,8 @@
             check = 8;
         }else if (websiteUrl == ""){
             check = 9;
+        }else if (positionsString == 1){
+            check = 10;
         }
 
         //if check is one everything is entered, now upload the model
@@ -126,6 +130,7 @@
             document.getElementById('modelImage').value = "";
             document.getElementById('colors').value = "";
             positionsArray = [];
+            positionsString = "";
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
@@ -149,6 +154,8 @@
             alert("Entered Seat is formatted incorrectly, please try again. ex: 13,26,10");
         }else if (check == 9){
             alert("Please enter a vehicle website url and try again.");
+        }else if (check == 10){
+            alert("Issues with vehicle positions. Please try again.);
         }
         
     }
@@ -338,7 +345,7 @@
         var pos = document.getElementById("positions").value;
 
         //set the pattern that the users input must match
-        var positionsPattern = /^\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\)(,\((-?\d+(\.\d+)?),(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)\))*$/;
+        var positionsPattern = /^\d+,\d+,\d+$/;
         
         //check that it matches that pattern
         //if it does then push the position to the array
@@ -353,9 +360,15 @@
             
             //clear current position so user can add another
             document.getElementById('positions').value = "";
+
+            return 0;
             
         } else {
-            alert("The seat input is not in the correct format. Please use the format 13,26,10.");
+            if (uploadCheck == 0){
+                alert("The seat input is not in the correct format. Please use the format 13,26,10.");
+            }else{
+                return 1;
+            }
         } 
     }
 
