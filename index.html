@@ -91,6 +91,8 @@
             check = 7;
         }else if (finalPosCheck == 1){
             check = 8;
+        }else if (websiteUrl == ""){
+            check = 9;
         }
 
         //if check is one everything is entered, now upload the model
@@ -127,8 +129,6 @@
         }else if (check == 4){
             alert("Please enter a vehicle image url and try again.");
         }else if (check == 5){
-            alert("Please enter a vehicle image url and try again.");
-        }else if (check == 6){
             alert("Please enter at least one vehicle color and try again.");
         }else if (check == 6){
             alert("Please enter at least one vehicle seat position and try again.");
@@ -136,6 +136,8 @@
             alert("Color is formatted incorrectly, please try again with valid hexadecimal codes. ex: f56830, 0d9bfa");
         }else if (check == 8){
             alert("Entered Seat is formatted incorrectly, please try again. ex: 13,26,10");
+        }else if (check == 9){
+            alert("Please enter a vehicle website url and try again.");
         }
         
     }
