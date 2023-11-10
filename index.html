@@ -196,7 +196,7 @@
         //change edit option to save/cancel
         var editCell = row.cells[row.cells.length - 1];
         editCell.innerHTML = '<span style="color: green; text-decoration: underline; cursor: pointer;" onclick="saveEditModel(\'' + rowId +  '\', \'' + origName +  '\')">Save</span>' +
-            <span id="cancelButton" style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;">Cancel</span>';
+            '<span id="cancelButton" style="color: red; text-decoration: underline; cursor: pointer; margin-left: 10px;">Cancel</span>';
     
         //event listener for button click to allow multiple functions for one button
         cancelButton.addEventListener("click", function() {
