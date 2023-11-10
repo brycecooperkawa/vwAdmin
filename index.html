@@ -9,9 +9,6 @@
     <script>
 
     //------------------------------VARIABLES------------------------------
-    //an array that stores the positions of the vehicle to be uploaded
-    var positionsArray = [];
-
     //a counter to make sure that every seat the user enters is added
     //ex: if the user doesn't push add seat before they upload the model whatever is in the positions input should be added to positions array
     var positionsCount = 0;
@@ -67,8 +64,16 @@
         //colorsValue will = colors if so
         //otherwise will serve as another check value
         var colorsValue = checkColors(colors);
-        console.log(colorsValue);
 
+        //check for an entered seat on upload click that doesnt exist in positionsArray
+        var positions = document.getElementById('positions').value;
+        var finalPosCheck = 0;
+        if (positions != ""){
+            var finalPosCheck = addSeatInput(1);
+        }
+
+        //convert the positions array into a string
+        var positionsString = "(" + positionsArray.join("),(") + ")";
         
         //variable check to check all inputs as vaild
         var check = 1;
@@ -85,12 +90,13 @@
             check = 6;
         }else if (colorsValue == "SaquonBarkley"){
             check = 7;
+        }else if (finalPosCheck == 1){
+            check = 8;
         }
 
         //if check is one everything is entered, now upload the model
         if (check == 1){
-            /*
-            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=";
+            var url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colorsValue + "&Positions=" + positionsString;
             console.log(url);
             fetch(url, {
                 method: 'POST'
@@ -99,7 +105,6 @@
             }).catch(error => {
                 console.error('Error sending request:', error);
             });
-            */
             alert("Vehicle Uploaded");
 
             //clear/reset form
@@ -128,7 +133,9 @@
         }else if (check == 6){
             alert("Please enter at least one vehicle seat position and try again.");
         }else if (check == 7){
-            alert("Color is formatted incorrectly, please try again.");
+            alert("Color is formatted incorrectly, please try again with valid hexadecimal codes. ex: f56830, 0d9bfa");
+        }else if (check == 8){
+            alert("Entered Seat is formatted incorrectly, please try again. ex: 13,26,10");
         }
         
     }
@@ -316,7 +323,7 @@
     }
 
     //on user button click, adds another input fields for the user to enter another seat
-    function addSeatInput() {
+    function addSeatInput(uploadCheck) {
         //prevent page from reloading
         event.preventDefault();
 
@@ -332,18 +339,16 @@
         if (pattern.test(pos)) {
             positionsArray.push(pos);
             //let the user know the seat was saved
-            alert("Vehicle seat was saved.");
-
-            //increment the count of seats
-            positionsCount = positionsCount + 1;
-
+            //only if this is being added from the add seat button, not the upload button
+            if (uploadCheck == 0){
+                alert("Vehicle seat was saved.");
+            }
+            
             //clear current position so user can add another
             document.getElementById('positions').value = "";
-
-            console.log(positionsArray);
             
         } else {
-            alert("The input is not in the correct format. Please use the format 3,3,3.");
+            alert("The seat input is not in the correct format. Please use the format 3,3,3.");
         } 
     }
 
@@ -781,7 +786,7 @@
         <input type="text" id="positions" name="positions"><br>
     </div>
 
-<button onclick="addSeatInput()">Add Another Seat</button>
+<button onclick="addSeatInput(0)">Add Another Seat</button>
 
 <br><br>
 
