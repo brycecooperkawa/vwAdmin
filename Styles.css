@@ -86,7 +86,7 @@ button {
     font-family: 'VWText-Regular';
 }
 
-/*
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -98,6 +98,7 @@ button {
     text-align: center;
 }
 
+/*
 .custom-input {
     position: relative;
     width: 200px;
