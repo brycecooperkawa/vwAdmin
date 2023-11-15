@@ -86,6 +86,7 @@ button {
     font-family: 'VWText-Regular';
 }
 
+/*
 .image-container {
     display: flex;
     justify-content: center;
@@ -116,14 +117,14 @@ button {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #007bff; /* Highlight color */
+    background-color: #007bff;
     transition: width 0.3s ease;
 }
 
 .custom-input input:focus + .input-highlight {
     width: 100%;
 }
-
+*/
 
 
     
