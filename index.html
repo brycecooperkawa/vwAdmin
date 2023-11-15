@@ -36,7 +36,7 @@
             alert("Passwords do not match. Please try again.");
         //if passwords match then create the account
         } else {
-            var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=" + null + "&TopLeft=" + null + "&TopMiddle=" + null + "&TopRight=" + null;
+            var url = "https://hjwtamibcy4jtpa5u6uzdbg4za0jwvwf.lambda-url.us-east-2.on.aws/?UserID=" + username + "&Password=" + password + "&Color=Green&Login=True&Modelname=" + null + "&TopLeft=" + null + "&TopMiddle=" + null + "&TopRight=" + null + "&Custom=" + null;
             fetch(url, {
                 method: 'POST'
             }).then(response => {
