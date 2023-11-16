@@ -124,7 +124,7 @@ button {
 }
 
 body.modal-open {
-    overflow: hidden; /* Disable scrolling */
+    overflow: hidden;
 }
 
 /*
