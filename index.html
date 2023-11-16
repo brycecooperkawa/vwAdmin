@@ -672,7 +672,7 @@
             var url = "https://wxc2gyog5w3wdnosa5nzzfmytm0fscfu.lambda-url.us-east-2.on.aws/?Modelname=" + name + "&Car=" + car;
 
             fetch(url, {
-                method: 'DELETE'
+                method: 'PUT'
             }).then(response => {
                 console.log('Request sent successfully');
             }).catch(error => {
