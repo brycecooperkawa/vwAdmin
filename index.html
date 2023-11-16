@@ -20,6 +20,30 @@
     //this is to stop tables from double filling when the other table was updated
     var vehiclesUpdated = 1;
 
+
+
+
+        // Function to check login credentials
+    function checkLogin() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        var storedUsername = localStorage.getItem('username');
+        var storedPassword = localStorage.getItem('password');
+
+        if (username === storedUsername && password === storedPassword) {
+            alert('Login successful!');
+            document.getElementById('loginModal').style.display = 'none'; // Hide the modal on successful login
+        }else{
+            alert('Invalid username or password');
+        }
+    }
+
+    // Show the modal when the page loads
+    window.onload = function() {
+        document.getElementById('loginModal').style.display = 'block';
+    };
+
     //------------------------------CREATE ACCOUNT------------------------------
     //create account functionality
     function createAccountDatabase() {
@@ -779,6 +803,16 @@
 </head>
     
 <body>
+
+
+<div id="loginModal" class="modal">
+    <h2>Login</h2>
+    <label for="usernameAdmin">Admin Username: </label>
+    <input type="text" id="usernameAdmin" name="usernameAdmin" required><br><br>
+    <label for="passwordAdmin">Admin Password: </label>
+    <input type="password" id="passwordAdmin" name="passwordAdmin" required><br><br>
+    <button onclick="checkLogin()">Login</button>
+</div>
 
 <!-- Header -->
 <h1>Volkswagen AR App Admin Panel</h1>
