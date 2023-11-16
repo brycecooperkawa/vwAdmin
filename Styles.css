@@ -123,6 +123,10 @@ button {
     z-index: 1000;
 }
 
+body.modal-open {
+    overflow: hidden; /* Disable scrolling */
+}
+
 /*
 .custom-input {
     position: relative;
