@@ -27,10 +27,12 @@ h1 {
     font-size: 55px;
 }
 
+/*
 .input-boxes {
     margin-bottom: 20px;
     margin-left: 100px;
 }
+*/
 
 label, input {
     display: inline-block;
