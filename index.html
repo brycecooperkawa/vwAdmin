@@ -20,20 +20,22 @@
     //this is to stop tables from double filling when the other table was updated
     var vehiclesUpdated = 1;
 
-
-
-
-    // Function to check login credentials
+    //------------------------------ADMIN LOGIN------------------------------
+    //checks the users login credentials
     function checkLogin() {
+        //get entered username and password
         var username = document.getElementById('usernameAdmin').value;
         var password = document.getElementById('passwordAdmin').value;
 
+        //get the username and passwords
         var storedUsername = "vw";
         var storedPassword = "admin";
 
+        //check they match then hide the login and activate the page
         if (username === storedUsername && password === storedPassword) {
             alert('Login successful!');
-            document.getElementById('loginModal').style.display = 'none'; // Hide the modal on successful login
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
         }else{
             alert('Invalid username or password');
         }
@@ -41,7 +43,10 @@
 
     // Show the modal when the page loads
     window.onload = function() {
+        //display login modal
         document.getElementById('loginModal').style.display = 'block';
+        //display overlay to prevent user from using page till login
+        document.getElementById('overlay').style.display = 'block';
     };
 
     //------------------------------CREATE ACCOUNT------------------------------
