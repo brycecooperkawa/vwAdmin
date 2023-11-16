@@ -23,13 +23,13 @@
 
 
 
-        // Function to check login credentials
+    // Function to check login credentials
     function checkLogin() {
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
+        var username = document.getElementById('usernameAdmin').value;
+        var password = document.getElementById('passwordAdmin').value;
 
-        var storedUsername = localStorage.getItem('username');
-        var storedPassword = localStorage.getItem('password');
+        var storedUsername = "vw";
+        var storedPassword = "admin";
 
         if (username === storedUsername && password === storedPassword) {
             alert('Login successful!');
