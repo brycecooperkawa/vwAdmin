@@ -268,16 +268,18 @@
             });
 
             //upload model with edits
-            url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + finalPosCheck;
-            console.log(url)
-            fetch(url, {
-                method: 'POST'
-            }).then(response => {
-                console.log('Request sent successfully');
-            }).catch(error => {
-                console.error('Error sending request:', error);
-            });
-            alert("Vehicle Model Updated");
+            setTimeout(function() {
+                url = "https://ux7uwagc55v3vqwuejqwl22rei0vjhhl.lambda-url.us-east-2.on.aws/?Modelname=" + modelName + "&Modelkey=" + modelUrl + "&Car=1&VWURL=" + websiteUrl + "&Location=0&Image=" + image + "&Color=" + colors + "&Positions=" + finalPosCheck;
+                console.log(url)
+                fetch(url, {
+                    method: 'POST'
+                }).then(response => {
+                    console.log('Request sent successfully');
+                }).catch(error => {
+                    console.error('Error sending request:', error);
+                });
+                alert("Vehicle Model Updated");
+            }, 11000);
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
