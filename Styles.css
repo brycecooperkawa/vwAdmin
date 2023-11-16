@@ -28,13 +28,13 @@ h1 {
 }
 
 .input-boxes {
-    margin-bottom: 20 px;
-    margin-left: 100 px;
+    margin-bottom: 20px;
+    margin-left: 100px;
 }
 
 label, input {
     display: inline-block;
-    margin-bottom: 10 px;
+    margin-bottom: 10px;
 }
 
 label {
