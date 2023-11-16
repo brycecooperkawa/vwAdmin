@@ -34,8 +34,10 @@
         //check they match then hide the login and activate the page
         if (username === storedUsername && password === storedPassword) {
             alert('Login successful!');
+            //hide everything having to do with login
             document.getElementById('loginModal').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
+            document.body.classList.remove('modal-open'); 
         }else{
             alert('Invalid username or password');
         }
@@ -47,6 +49,8 @@
         document.getElementById('loginModal').style.display = 'block';
         //display overlay to prevent user from using page till login
         document.getElementById('overlay').style.display = 'block';
+        //block the user from scrolling until login is gone
+        document.body.classList.add('modal-open');
     };
 
     //------------------------------CREATE ACCOUNT------------------------------
