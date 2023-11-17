@@ -27,35 +27,34 @@
         var username = document.getElementById('usernameAdmin').value;
         var password = document.getElementById('passwordAdmin').value;
 
-        //get the username and passwords
-        var storedUsername = "vw";
-        var storedPassword = "admin";
-
-        //check they match then hide the login and activate the page
-        if (username === storedUsername && password === storedPassword) {
-            alert('Login successful!');
-            //hide everything having to do with login
-            document.getElementById('loginModal').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            document.body.classList.remove('modal-open'); 
-        }else{
-            alert('Invalid username or password');
-        }
-
-
+        //check the login by parsing the JSON response from the API
         var url = "https://4dhdgfkx2cyaocfkgjiojsco2m0vngnw.lambda-url.us-east-2.on.aws/?User=" + username + "&Pass=" + password;
         var data;
         const requestJSONAdmin = async url => {
 
             const response = await (await fetch(url)).json();
 
+            //the array returned
             data=response.data;
-            console.log(data);
+
+            //will return an array with content if login is valid will be empty if not
+            if (data.length != 0){
+                alert('Login successful!');
+                //hide everything having to do with login so admin can access page
+                document.getElementById('loginModal').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
+                document.body.classList.remove('modal-open'); 
+            }else{
+                //alert user this didn't work
+                alert('Invalid username or password');
+                //clear form
+                document.getElementById('usernameAdmin').value = "";
+                document.getElementById('passwordAdmin').value = "";
+            }
         }
 
+        //call json request
         requestJSONAdmin(url);
-
-        
     }
 
     // Show the modal when the page loads
