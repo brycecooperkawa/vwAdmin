@@ -417,6 +417,7 @@
             //only if this is being added from the add seat button, not the upload button
             if (uploadCheck == 0){
                 alert("Vehicle seat was saved.");
+                displayData()
             }
             
             //clear current position so user can add another
@@ -821,10 +822,6 @@
             dataArrayElement.appendChild(li);
           });
     }
-
-    // Call the displayData function when the page loads
-    window.onload = displayData;
-
     
     //TO DO
     //styling
