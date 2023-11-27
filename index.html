@@ -417,7 +417,6 @@
             //only if this is being added from the add seat button, not the upload button
             if (uploadCheck == 0){
                 alert("Vehicle seat was saved.");
-                displayData()
             }
             
             //clear current position so user can add another
@@ -813,15 +812,6 @@
             document.getElementById('modelImage').value = "EliManning";
         }
     }
-
-    function displayData() {
-        const dataArrayElement = document.getElementById('dataArray');
-        positionsArray.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = "Current Seats: " + item; // Adding prefix
-            dataArrayElement.appendChild(li);
-          });
-    }
     
     //TO DO
     //styling
@@ -925,8 +915,6 @@
         <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
         <input type="text" id="positions" name="positions"><br>
     </div>
-
-    <ul id="dataArray"></ul>
 
 <button onclick="addSeatInput(0)">Add Another Seat</button>
 
