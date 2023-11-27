@@ -812,10 +812,24 @@
             document.getElementById('modelImage').value = "EliManning";
         }
     }
+
+    function displayData() {
+        const dataArrayElement = document.getElementById('dataArray');
+        positionsArray.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = "Current Seats: " + item; // Adding prefix
+            dataArrayElement.appendChild(li);
+          });
+    }
+
+    // Call the displayData function when the page loads
+    window.onload = displayData;
+
     
     //TO DO
     //styling
     //fix delete 502?
+    //display seats currently added
 
     //THINGS DONE THIS WEEK
 
@@ -914,6 +928,8 @@
         <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
         <input type="text" id="positions" name="positions"><br>
     </div>
+
+    <ul id="dataArray"></ul>
 
 <button onclick="addSeatInput(0)">Add Another Seat</button>
 
