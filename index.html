@@ -422,6 +422,9 @@
             //clear current position so user can add another
             document.getElementById('positions').value = "";
 
+            //update positions displayed
+            currentPositions()
+
             return 0;
             
         } else {
@@ -812,6 +815,11 @@
             document.getElementById('modelImage').value = "EliManning";
         }
     }
+
+    function currentPositions() {
+        var seats = document.getElementById('seats').value;
+        console.log(seats)
+    }
     
     //TO DO
     //styling
@@ -914,6 +922,10 @@
     <div class="input-boxes" id="positionsField">
         <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
         <input type="text" id="positions" name="positions"><br>
+    </div>
+
+    <div class="input-boxes" id="seatsField">
+        <p>Current Seats: <span id="seats"></span></p>
     </div>
 
 <button onclick="addSeatInput(0)">Add Another Seat</button>
