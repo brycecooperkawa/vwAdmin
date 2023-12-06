@@ -909,38 +909,49 @@
 <div class = "section-header">
     <p>Upload Vehicle</p>
 </div>
-<br>
     
 <form>
     
-    <div class = "input-boxes">
-        <label for="modelName">Vehicle Name: </label>
-        <input type="text" id="modelName" name="modelName"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes">
+            <input type="text" id="modelName" name="modelName" required>
+            <label for="modelName">Vehicle Name: </label>
+        </div>
     </div>
 
-    <div class = "input-boxes">
-        <label for="modelUrl">Vehicle Model URL: </label>
-        <input type="text" id="modelUrl" name="modelUrl"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes">
+            <input type="text" id="modelUrl" name="modelUrl" required>
+            <label for="modelUrl">Vehicle Model URL: </label>
+        </div>
     </div>
 
-    <div class = "input-boxes" id="websiteUrlField">
-        <label for="websiteUrl">Vehicle Website URL: </label>
-        <input type="text" id="websiteUrl" name="websiteUrl"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes" id="websiteUrlField">
+            <input type="text" id="websiteUrl" name="websiteUrl" required>
+            <label for="websiteUrl">Vehicle Website URL: </label>
+        </div>
     </div>
 
-    <div class = "input-boxes" id="modelImageField">
-        <label for="modelImage">Vehicle Image URL: </label>
-        <input type="text" id="modelImage" name="modelImage"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes" id="modelImageField">
+            <input type="text" id="modelImage" name="modelImage" required>
+            <label for="modelImage">Vehicle Image URL: </label>
+        </div>
     </div>
 
-    <div class = "input-boxes" id="colorField">
-        <label for="colors">Enter Vehicle Colors (ex: f56830, 0d9bfa, 61ab8a, f2dd42): </label>
-        <input type="text" id="colors" name="colors"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes" id="colorField">
+            <input type="text" id="colors" name="colors" required>
+            <label for="colors">Enter Vehicle Colors (ex: f56830, 0d9bfa, 61ab8a, f2dd42): </label>
+        </div>
     </div>
 
-    <div class="input-boxes" id="positionsField">
-        <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
-        <input type="text" id="positions" name="positions"><br>
+    <div class = "wrapper">
+        <div class="input-boxes" id="positionsField">
+            <input type="text" id="positions" name="positions" required>
+            <label for="positions">Enter Vehicle Seat Positions (ex: 13, 26, 10): </label>
+        </div>
     </div>
 
     <div class="input-boxes" id="seatsField">
@@ -978,20 +989,23 @@
 <div class = "section-header">
     <p>Upload Accessory</p>
 </div>
-<br>
     
 <form>
-    
-    <div class = "input-boxes">
-        <label for="accessoryName">Accessory Name: </label>
-        <input type="text" id="accessoryName" name="accessoryName"><br><br>
+
+    <div class = "wrapper">
+        <div class = "input-boxes">
+            <input type="text" id="accessoryName" name="accessoryName" required>
+            <label for="accessoryName">Accessory Name: </label>
+        </div>
     </div>
 
-    <div class = "input-boxes">
-        <label for="accessoryUrl">Accessory URL: </label>
-        <input type="text" id="accessoryUrl" name="accessoryUrl"><br><br>
+    <div class = "wrapper">
+        <div class = "input-boxes">
+            <input type="text" id="accessoryUrl" name="accessoryUrl" required>
+            <label for="accessoryUrl">Accessory URL: </label>
+        </div>
     </div>
-
+        
     <div class = "input-boxes" id="locationField">
         <label for="location">Location: </label>
         <select id="location" name="location">
@@ -1039,6 +1053,8 @@
 <button onclick="createAccountDatabase()">Create Account</button>
 
 </form>
+
+<br><br>
     
 </body>
     
