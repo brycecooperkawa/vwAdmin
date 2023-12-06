@@ -5,7 +5,7 @@ An admin panel that allows the admin to upload to, delete from, and edit models 
 
 # Functionality:
 *Upload vehicle allows the user to upload a model to the database*  
-**Upload Vehicle Instructions**  
+**Upload Vehicle Instructions:**  
 Vehicle Name: name of the vehicle  
 Vehicle Model URL: S3 link that directs to the model file  
 Vehicle Website URL: link to the official vw website for the model of the car (uploading this through the admin panel, use tinyurl.com and upload the tinyurl for CORS error reasons  
@@ -15,15 +15,18 @@ Vehicle Seat Positions: SIMD3 vectors to represent seat positions in the interio
 Will not allow you to upload a model with an existing name  
 
 *Upload accessory allows the user to upload an accessory model to the database*
-**Upload Accessory Instructions**  
+**Upload Accessory Instructions:**  
 Accessory Name: name of the accessory  
 Accessory URL: S3 link that directs to the model file  
 Location: Location accessory will be displayed on the vehicles  
 
+**Delete Instructions**  
 *Delete button removes the model from the database*  
 
+**Edit Instructions**  
 *Edit button allows the user to edit the model currently in the database*   
 
+**Create Account Instructions**  
 *Create account creates a user account that can be used in the application*  
 
 # Instructions To Use:
