@@ -11,16 +11,16 @@ if you want to set this up in a new github repository, follow the instructions l
 https://docs.github.com/en/pages/quickstart  
 
 # Login Information:
-admin username: vw
+admin username: vw  
 admin password: admin
 
 # Web Page Information:
-currently hosted on github pages under the url:
-https://brycecooperkawa.github.io/vwAdmin/
-with a stable internet connection and a viable web browser accessing the above url will display the admin panel
-will function like any other website plug in the index.html file as well as the Styles.css to wherever you would host
+currently hosted on github pages under the url:  
+https://brycecooperkawa.github.io/vwAdmin/  
+with a stable internet connection and a viable web browser accessing the above url will display the admin panel  
+will function like any other website plug in the index.html file as well as the Styles.css to wherever you would host  
 the website and it should work
 
 # Database stuff:
-after the end of the 2023 fall semester, the databases this panel are connected to will likely be shut down
+after the end of the 2023 fall semester, the databases this panel are connected to will likely be shut down  
 if using after this, you probably need to adjust the links in the js code
