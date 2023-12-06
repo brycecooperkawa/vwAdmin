@@ -1,4 +1,4 @@
-# vwAdmin
+# Volkswagen Shopping App with AR Admin Panel Github
 
 # Description:
 An admin panel that allows the admin to upload to, delete from, and edit models in the model database for the Volkswagen Shopping App with AR
