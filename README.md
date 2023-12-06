@@ -20,13 +20,13 @@ Accessory Name: name of the accessory
 Accessory URL: S3 link that directs to the model file  
 Location: Location accessory will be displayed on the vehicles  
 
-**Delete Instructions**  
+**Delete Instructions:**  
 *Delete button removes the model from the database*  
 
-**Edit Instructions**  
+**Edit Instructions:**  
 *Edit button allows the user to edit the model currently in the database*   
 
-**Create Account Instructions**  
+**Create Account Instructions:**  
 *Create account creates a user account that can be used in the application*  
 
 # Instructions To Use:
