@@ -3,6 +3,10 @@
 # Description:
 An admin panel that allows the admin to upload to, delete from, and edit models in the model database for the Volkswagen Shopping App with AR
 
+# Login Information:
+admin username: vw  
+admin password: admin
+
 # Functionality:
 **Upload Vehicle Instructions:**  
 *Upload vehicle allows the user to upload a model to the database*   
@@ -29,16 +33,12 @@ Location: Location accessory will be displayed on the vehicles
 **Create Account Instructions:**  
 *Create account creates a user account that can be used in the application*  
 
-# Instructions To Use:
+# Instructions To Use And Setup:
 index.html contains all html and js code  
 styling is saved in the Styles.css code  
 .glb file is used to model display  
 if you want to set this up in a new github repository, follow the instructions linked here to set up the web page through github pages:  
 https://docs.github.com/en/pages/quickstart  
-
-# Login Information:
-admin username: vw  
-admin password: admin
 
 # Web Page Information:
 currently hosted on github pages under the url:  
