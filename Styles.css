@@ -16,7 +16,18 @@
 }
 
 body { 
-    background-color: #fdfaf9; 
+    background-color: #fdfaf9;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 p {
@@ -30,13 +41,6 @@ h1 {
     text-align: center;
     font-size: 55px;
 }
-
-/*
-.input-boxes {
-    margin-bottom: 20px;
-    margin-left: 100px;
-}
-*/
 
 label, input {
     display: inline-block;
@@ -90,6 +94,12 @@ th {
 
 button {
     font-family: 'VWText-Regular';
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6091C3;
+    border-radius: 12px;
+    color: #FDFAF9;
+    border-block-color: #1F2F57;
 }
 
 
