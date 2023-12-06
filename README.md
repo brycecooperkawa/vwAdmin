@@ -35,7 +35,7 @@ We have found this error to be on Amazon's side
 
 Create account creates a user account that can be used in the application  
 
-# Instructions to use:
+# Instructions To Use:
 index.html contains all html and js code  
 styling is saved in the Styles.css code  
 .glb file is used to model display  
@@ -53,6 +53,6 @@ with a stable internet connection and a viable web browser accessing the above u
 will function like any other website plug in the index.html file as well as the Styles.css to wherever you would host  
 the website and it should work
 
-# Database stuff:
+# Database Stuff:
 after the end of the 2023 fall semester, the databases this panel are connected to will likely be shut down  
 if using after this, you probably need to adjust the links in the js code
