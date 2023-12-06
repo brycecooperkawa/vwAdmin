@@ -819,8 +819,21 @@
     //displays the positions added to the vehicle that is currently being uploaded
     function currentPositions() {
         var seats = document.getElementById('seats');
-        console.log(positionsArray);
-        seats.textContent = positionsArray[0];
+
+        var seatsString = "";
+      
+        // Loop through the array elements
+        for (var i = 0; i < positionsArray.length; i++) {
+            seatsString += '(' + positionsArray[i] + ')'; // Concatenate each element in the desired format
+        
+            // Add a comma and space if it's not the last element
+            if (i !== positionsArray.length - 1) {
+              seatsString += ', ';
+            }
+        }
+
+        console.log(seatsString);
+        seats.textContent = seatsString;
     }
     
     //TO DO
