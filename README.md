@@ -14,8 +14,8 @@ Vehicle Colors: hexcodes for all colors available for the vehicle
 Vehicle Seat Positions: SIMD3 vectors to represent seat positions in the interior of the model, click add seat to add a seat, must have at least one  
 Will not allow you to upload a model with an existing name  
 
-*Upload accessory allows the user to upload an accessory model to the database*
 **Upload Accessory Instructions:**  
+*Upload accessory allows the user to upload an accessory model to the database*  
 Accessory Name: name of the accessory  
 Accessory URL: S3 link that directs to the model file  
 Location: Location accessory will be displayed on the vehicles  
