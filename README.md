@@ -11,15 +11,15 @@ Vehicle Website URL: link to the official vw website for the model of the car (u
 Vehicle Image URL: link to an image of the vehicle  
 Vehicle Colors: hexcodes for all colors available for the vehicle  
 Vehicle Seat Positions: SIMD3 vectors to represent seat positions in the interior of the model, click add seat to add a seat, must have at least one  
-Will not allow you to upload a model with an existing name
+Will not allow you to upload a model with an existing name  
 
 Upload accessory allows the user to upload an accessory model to the database  
-Accessory Name: name of the accessory
-Accessory URL: S3 link that directs to the model file 
-Location: Location accessory will be displayed on the vehicles
+Accessory Name: name of the accessory  
+Accessory URL: S3 link that directs to the model file  
+Location: Location accessory will be displayed on the vehicles  
 
-Delete button removes the model from the database
-**When using delete (or edit) if the table refreshes and delete hasn't gone through, inspect the webpage and look for 502 error**  
+Delete button removes the model from the database  
+**When using delete (or edit) if the table refreshes and delete hasn't gone through, inspect the webpage and look for 502 error**   
 Found that at times of Amazon server error spikes, the call fails as Amazon is delivering it to the API  
 Normally waiting for 15 minutes will solve this and the deletion will go through  
 Check this website for aws info:  
