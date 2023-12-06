@@ -134,6 +134,7 @@ body.modal-open {
 .wrapper {
     width: 450px;
     padding: 30px;
+    margin: auto;
 }
 
 .wrapper .input-boxes {
