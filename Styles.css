@@ -131,6 +131,40 @@ body.modal-open {
     overflow: hidden;
 }
 
+.wrapper {
+    width: 450px;
+    padding: 30px;
+}
+
+.wrapper .input-boxes {
+    height: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.wrapper .input-boxes input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px solid silver;
+}
+
+.input-boxes input:focus ~ label,
+.input-boxes input:valid ~ label {
+    transform: translateY(-20px);
+    font-size: 15px;
+}
+
+.wrapper .input-boxes label {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
 
 
 
