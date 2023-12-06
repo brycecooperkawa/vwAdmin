@@ -152,7 +152,7 @@ body.modal-open {
 
 .input-boxes input:focus ~ label,
 .input-boxes input:valid ~ label {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
     font-size: 15px;
 }
 
