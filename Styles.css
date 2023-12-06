@@ -19,6 +19,10 @@ body {
     background-color: #fdfaf9; 
 }
 
+p {
+    font-family: 'VWHead-Regular';
+}
+
 
 h1 {
     font-family: 'VWHead-Bold';
@@ -50,12 +54,12 @@ label {
     height: 100 vh;
 }  
 
-.model-display{
+.model-display {
     height: 50vh;
     width: 55vw;
 }
 
-model-viewer{
+model-viewer {
     height: inherit;
     width: inherit;
 }
@@ -127,34 +131,7 @@ body.modal-open {
     overflow: hidden;
 }
 
-/*
-.custom-input {
-    position: relative;
-    width: 200px;
-}
 
-.custom-input input {
-    width: 100%;
-    height: 60px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    outline: none;
-}
-
-.input-highlight {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #007bff;
-    transition: width 0.3s ease;
-}
-
-.custom-input input:focus + .input-highlight {
-    width: 100%;
-}
-*/
 
 
     
