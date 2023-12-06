@@ -4,8 +4,8 @@
 An admin panel that allows the admin to upload to, delete from, and edit models in the model database for the Volkswagen Shopping App with AR
 
 # Functionality:
-*Upload vehicle allows the user to upload a model to the database*  
 **Upload Vehicle Instructions:**  
+*Upload vehicle allows the user to upload a model to the database*   
 Vehicle Name: name of the vehicle  
 Vehicle Model URL: S3 link that directs to the model file  
 Vehicle Website URL: link to the official vw website for the model of the car (uploading this through the admin panel, use tinyurl.com and upload the tinyurl for CORS error reasons  
