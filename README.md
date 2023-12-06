@@ -1,4 +1,6 @@
-# Volkswagen Shopping App with AR Admin Panel Github
+# Volkswagen Shopping App with AR Admin Panel Github  
+visit the original GitHub repository at:  
+https://github.com/brycecooperkawa/vwAdmin  
 
 # Description:
 An admin panel that allows the admin to upload to, delete from, and edit models in the model database for the Volkswagen Shopping App with AR
@@ -46,6 +48,7 @@ https://brycecooperkawa.github.io/vwAdmin/
 with a stable internet connection and a viable web browser accessing the above URL will display the admin panel  
 will function like any other website plug in the index.html file as well as the Styles.css to wherever you would host  
 the website and it should work
+opening index.html with google chrome should also take the user to a working webpage  
 visit the original GitHub repository at:  
 https://github.com/brycecooperkawa/vwAdmin  
 
