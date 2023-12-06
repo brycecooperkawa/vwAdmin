@@ -178,6 +178,7 @@
             document.getElementById('colors').value = "";
             positionsArray = [];
             positionsString = "";
+            document.getElementById('seats').value = "";
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
@@ -818,21 +819,24 @@
 
     //displays the positions added to the vehicle that is currently being uploaded
     function currentPositions() {
+        //get the place the seats are displayed
         var seats = document.getElementById('seats');
 
+        //set empty string to eventually display
         var seatsString = "";
       
-        // Loop through the array elements
+        //loop through the positions array
         for (var i = 0; i < positionsArray.length; i++) {
-            seatsString += '(' + positionsArray[i] + ')'; // Concatenate each element in the desired format
+            //formatting
+            seatsString += '(' + positionsArray[i] + ')';
         
-            // Add a comma and space if it's not the last element
+            //add a comma and space if it's not the last element
             if (i !== positionsArray.length - 1) {
               seatsString += ', ';
             }
         }
 
-        console.log(seatsString);
+        //set the seats displayed as the seats displayed
         seats.textContent = seatsString;
     }
     
