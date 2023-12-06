@@ -46,6 +46,8 @@ https://brycecooperkawa.github.io/vwAdmin/
 with a stable internet connection and a viable web browser accessing the above URL will display the admin panel  
 will function like any other website plug in the index.html file as well as the Styles.css to wherever you would host  
 the website and it should work
+visit the original GitHub repository at:  
+https://github.com/brycecooperkawa/vwAdmin  
 
 # Database Stuff:
 after the end of the 2023 fall semester, the databases this panel are connected to will likely be shut down  
