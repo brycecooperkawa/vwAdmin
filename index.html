@@ -178,7 +178,8 @@
             document.getElementById('colors').value = "";
             positionsArray = [];
             positionsString = "";
-            document.getElementById('seats').value = "";
+            var seats = document.getElementById('seats');
+            seats.textContent = "";
 
             //Wait 5 seconds before updating table
             setTimeout(function() {
