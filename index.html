@@ -28,6 +28,9 @@
         var password = document.getElementById('passwordAdmin').value;
 
         //check the login by parsing the JSON response from the API
+
+        //commented out the following because the database no longer exists, so this allows users to actually login
+        /*
         var url = "https://4dhdgfkx2cyaocfkgjiojsco2m0vngnw.lambda-url.us-east-2.on.aws/?User=" + username + "&Pass=" + password;
         var data;
         const requestJSONAdmin = async url => {
@@ -55,6 +58,22 @@
 
         //call json request
         requestJSONAdmin(url);
+        */
+
+        if (username == "vw" && password == "admin"){
+            alert('Login successful!');
+            //hide everything having to do with login so admin can access page
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.body.classList.remove('modal-open'); 
+        }else{
+            //alert user this didn't work
+            alert('Invalid username or password. Please use username: vw password: admin');
+            //clear form
+            document.getElementById('usernameAdmin').value = "";
+            document.getElementById('passwordAdmin').value = "";
+        }
+        
     }
 
     // Show the modal when the page loads
